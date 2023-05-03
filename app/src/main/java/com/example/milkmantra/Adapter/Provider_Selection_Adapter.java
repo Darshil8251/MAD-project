@@ -3,13 +3,16 @@ package com.example.milkmantra.Adapter;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.milkmantra.R;
 
@@ -32,6 +35,27 @@ public class Provider_Selection_Adapter  extends RecyclerView.Adapter<Provider_S
         this.provider_selections = provider_selections;
     }
 
+
+    /*
+    ADD DATA TO ADAPTER
+     */
+    public void add(Customer_Add_Provider_model s) {
+        provider_selections.add(s);
+        notifyDataSetChanged();
+    }
+
+    public Customer_Add_Provider_model getItem(int position) {
+        return provider_selections.get(position);
+    }
+
+    /*
+    CLEAR DATA FROM ADAPTER
+     */
+    public void clear() {
+        provider_selections.clear();
+        notifyDataSetChanged();
+    }
+
     //here we have create whole layout into view
     @NonNull
     @Override
@@ -45,13 +69,15 @@ public class Provider_Selection_Adapter  extends RecyclerView.Adapter<Provider_S
     public void onBindViewHolder(@NonNull Provider_Selection_Adapter.ViewHolder viewHolder, int i) {
 
 
-        viewHolder.name.setText(provider_selections.get(i).getName());
-        viewHolder.ed1.setText(provider_selections.get(i).getCow_Morning());
-        viewHolder.ed2.setText(provider_selections.get(i).getBuffelow_Morning());
-        viewHolder.ed3.setText(provider_selections.get(i).getOther_Morning());
-        viewHolder.ed4.setText(provider_selections.get(i).getCow_Evening());
-        viewHolder.ed5.setText(provider_selections.get(i).getBuffelow_Evening());
-        viewHolder.ed6.setText(provider_selections.get(i).getOther_Evening());
+       // viewHolder.name.setText(provider_selections.get(i).getProvider_name());
+        viewHolder.ed1.setText(provider_selections.get(i).getCustomer_morning_cow_volume());
+        viewHolder.ed2.setText(provider_selections.get(i).getCustomer_morning_buffelo_volume());
+        viewHolder.ed3.setText(provider_selections.get(i).getCustomer_morning_other_volume());
+        viewHolder.ed4.setText(provider_selections.get(i).getCustomer_evening_cow_volume());
+        viewHolder.ed5.setText(provider_selections.get(i).getCustomer_evening_buffelo_volume());
+        viewHolder.ed6.setText(provider_selections.get(i).getCustomer_evening_other_volume());
+        viewHolder.lblName.setText(provider_selections.get(i).getProvider_name());
+        viewHolder.lblProvider_id.setText(provider_selections.get(i).getProvider_id());
 
 
 
@@ -67,8 +93,10 @@ public class Provider_Selection_Adapter  extends RecyclerView.Adapter<Provider_S
     }
 
     // all the operation perform here
-    public class ViewHolder extends RecyclerView.ViewHolder {
+    public class ViewHolder extends RecyclerView.ViewHolder  implements  View.OnClickListener{
         EditText ed1,ed2,ed3,ed4,ed5,ed6;
+        TextView lblName,lblProvider_id;
+        Button btnSaveCustomerMilkDetail;
         int m,e;
         TextView name;
         Switch sw;
@@ -77,7 +105,7 @@ public class Provider_Selection_Adapter  extends RecyclerView.Adapter<Provider_S
         // here we have find id and after the set data into onBindingViewHolder
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            name=itemView.findViewById(R.id.Name);
+           // name=itemView.findViewById(R.id.Name);
 
         ed1=itemView.findViewById(R.id.moring_cow);
         ed2=itemView.findViewById(R.id.mornig_buffelow);
@@ -85,8 +113,21 @@ public class Provider_Selection_Adapter  extends RecyclerView.Adapter<Provider_S
         ed4=itemView.findViewById(R.id.evening_cow);
         ed5=itemView.findViewById(R.id.evenig_buffelow);
         ed6=itemView.findViewById(R.id.eveninig_other);
+        lblName=itemView.findViewById(R.id.lblName);
+        lblProvider_id=itemView.findViewById(R.id.lblProvider_id);
+        btnSaveCustomerMilkDetail=itemView.findViewById(R.id.btnSaveCustomerMilkDetail);
+        btnSaveCustomerMilkDetail.setOnClickListener(this);
 
+        }
 
+        @Override
+        public void onClick(View view) {
+            switch (view.getId()){
+                case R.id.btnSaveCustomerMilkDetail:
+
+                    Log.v("ERROR", "##ERROR" + "Save clicked"+lblName.getText().toString());
+                    break;
+            }
         }
     }
 }

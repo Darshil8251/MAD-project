@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.example.milkmantra.R;
 import com.example.milkmantra.customer.create_account_customer;
 import com.example.milkmantra.model.Custom_Provider_Home;
+import com.example.milkmantra.model.Customer_Add_Provider_model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +36,16 @@ public class Provider_Customer_Adapter extends   RecyclerView.Adapter<Provider_C
         this.customer_list = (ArrayList<Custom_Provider_Home>) filteredList;
         notifyDataSetChanged();
 
+    }
+
+    public void clear() {
+        customer_list.clear();
+        notifyDataSetChanged();
+    }
+
+    public void add(Customer_Add_Provider_model s) {
+        //customer_list.add(s);
+        notifyDataSetChanged();
     }
 
     public Provider_Customer_Adapter(Context context, ArrayList<Custom_Provider_Home> customer_list) {

@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+
 
     <application
         android:name=".MyApplication_OnlineTransfer"
@@ -10,7 +17,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:usesCleartextTraffic="true"
+        >
         <activity
             android:name=".provider.provider_profile"
             android:exported="false"
@@ -52,7 +61,7 @@
             android:theme="@style/myTheme.Milkmantra"
             android:parentActivityName=".customer.home_customer"/>
         <activity
-            android:name=".customer.home_customer"
+            android:name=".MainActivity"
             android:exported="false"
             android:theme="@style/myTheme.Milkmantra"/>
         <activity
@@ -72,7 +81,7 @@
             android:parentActivityName="com.example.milkmantra.MainActivity"/>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".customer.home_customer"
             android:exported="true"
             android:theme="@style/myTheme.Milkmantra">
             <intent-filter>

@@ -1,81 +1,130 @@
 package com.example.milkmantra.model;
 
 public class Customer_Add_Provider_model {
-    String Name,Cow_Morning,Cow_Evening,Buffelow_Morning,Buffelow_Evening,Other_Morning,Other_Evening;
-    String Vacation_Mode;
+   String customer_id,customer_vacation_mode,customer_morning_cow_volume,customer_morning_buffelo_volume,customer_morning_other_volume,
+           customer_evening_cow_volume,customer_evening_buffelo_volume,customer_evening_other_volume,
+           customer_provider_is_active,provider_name,provider_id,provider_vacation_mode,provider_customer_associated;
+    public Customer_Add_Provider_model()
+    {
 
-    public void setName(String name) {
-        Name = name;
+    }
+    public Customer_Add_Provider_model(String customer_id, String customer_vacation_mode, String customer_morning_cow_volume, String customer_morning_buffelo_volume, String customer_morning_other_volume, String customer_evening_cow_volume, String customer_evening_buffelo_volume, String customer_evening_other_volume, String customer_provider_is_active, String provider_name, String provider_id, String provider_vacation_mode, String provider_customer_associated) {
+        this.customer_id = customer_id;
+        this.customer_vacation_mode = customer_vacation_mode;
+        this.customer_morning_cow_volume = customer_morning_cow_volume;
+        this.customer_morning_buffelo_volume = customer_morning_buffelo_volume;
+        this.customer_morning_other_volume = customer_morning_other_volume;
+        this.customer_evening_cow_volume = customer_evening_cow_volume;
+        this.customer_evening_buffelo_volume = customer_evening_buffelo_volume;
+        this.customer_evening_other_volume = customer_evening_other_volume;
+        this.customer_provider_is_active = customer_provider_is_active;
+        this.provider_name = provider_name;
+        this.provider_id = provider_id;
+        this.provider_vacation_mode = provider_vacation_mode;
+        this.provider_customer_associated = provider_customer_associated;
     }
 
-    public void setCow_Morning(String cow_Morning) {
-        Cow_Morning = cow_Morning;
+    public String getCustomer_id() {
+        return customer_id;
     }
 
-    public void setCow_Evening(String cow_Evening) {
-        Cow_Evening = cow_Evening;
+    public String getCustomer_vacation_mode() {
+        return customer_vacation_mode;
     }
 
-    public void setBuffelow_Morning(String buffelow_Morning) {
-        Buffelow_Morning = buffelow_Morning;
+    public String getCustomer_morning_cow_volume() {
+        return customer_morning_cow_volume;
     }
 
-    public void setBuffelow_Evening(String buffelow_Evening) {
-        Buffelow_Evening = buffelow_Evening;
+    public String getCustomer_morning_buffelo_volume() {
+        return customer_morning_buffelo_volume;
     }
 
-    public void setOther_Morning(String other_Morning) {
-        Other_Morning = other_Morning;
+    public String getCustomer_morning_other_volume() {
+        return customer_morning_other_volume;
     }
 
-    public void setOther_Evening(String other_Evening) {
-        Other_Evening = other_Evening;
+    public String getCustomer_evening_cow_volume() {
+        return customer_evening_cow_volume;
     }
 
-    public void setVacation_Mode(String vacation_Mode) {
-        Vacation_Mode = vacation_Mode;
+    public String getCustomer_evening_buffelo_volume() {
+        return customer_evening_buffelo_volume;
     }
 
-    public Customer_Add_Provider_model(String name, String cow_Morning, String cow_Evening, String buffelow_Morning, String buffelow_Evening, String other_Morning, String other_Evening, String vacation_Mode) {
-        Name = name;
-        Cow_Morning = cow_Morning;
-        Cow_Evening = cow_Evening;
-        Buffelow_Morning = buffelow_Morning;
-        Buffelow_Evening = buffelow_Evening;
-        Other_Morning = other_Morning;
-        Other_Evening = other_Evening;
-        Vacation_Mode = vacation_Mode;
+    public String getCustomer_evening_other_volume() {
+        return customer_evening_other_volume;
     }
 
-    public String getName() {
-        return Name;
+    public String getCustomer_provider_is_active() {
+        return customer_provider_is_active;
     }
 
-    public String getCow_Morning() {
-        return Cow_Morning;
+    public String getProvider_name() {
+        return provider_name;
     }
 
-    public String getCow_Evening() {
-        return Cow_Evening;
+    public String getProvider_id() {
+        return provider_id;
     }
 
-    public String getBuffelow_Morning() {
-        return Buffelow_Morning;
+    public String getProvider_vacation_mode() {
+        return provider_vacation_mode;
     }
 
-    public String getBuffelow_Evening() {
-        return Buffelow_Evening;
+    public String getProvider_customer_associated() {
+        return provider_customer_associated;
     }
 
-    public String getOther_Morning() {
-        return Other_Morning;
+    public void setCustomer_id(String customer_id) {
+        this.customer_id = customer_id;
     }
 
-    public String getOther_Evening() {
-        return Other_Evening;
+    public void setCustomer_vacation_mode(String customer_vacation_mode) {
+        this.customer_vacation_mode = customer_vacation_mode;
     }
 
-    public String getVacation_Mode() {
-        return Vacation_Mode;
+    public void setCustomer_morning_cow_volume(String customer_morning_cow_volume) {
+        this.customer_morning_cow_volume = customer_morning_cow_volume;
+    }
+
+    public void setCustomer_morning_buffelo_volume(String customer_morning_buffelo_volume) {
+        this.customer_morning_buffelo_volume = customer_morning_buffelo_volume;
+    }
+
+    public void setCustomer_morning_other_volume(String customer_morning_other_volume) {
+        this.customer_morning_other_volume = customer_morning_other_volume;
+    }
+
+    public void setCustomer_evening_cow_volume(String customer_evening_cow_volume) {
+        this.customer_evening_cow_volume = customer_evening_cow_volume;
+    }
+
+    public void setCustomer_evening_buffelo_volume(String customer_evening_buffelo_volume) {
+        this.customer_evening_buffelo_volume = customer_evening_buffelo_volume;
+    }
+
+    public void setCustomer_evening_other_volume(String customer_evening_other_volume) {
+        this.customer_evening_other_volume = customer_evening_other_volume;
+    }
+
+    public void setCustomer_provider_is_active(String customer_provider_is_active) {
+        this.customer_provider_is_active = customer_provider_is_active;
+    }
+
+    public void setProvider_name(String provider_name) {
+        this.provider_name = provider_name;
+    }
+
+    public void setProvider_id(String provider_id) {
+        this.provider_id = provider_id;
+    }
+
+    public void setProvider_vacation_mode(String provider_vacation_mode) {
+        this.provider_vacation_mode = provider_vacation_mode;
+    }
+
+    public void setProvider_customer_associated(String provider_customer_associated) {
+        this.provider_customer_associated = provider_customer_associated;
     }
 }
