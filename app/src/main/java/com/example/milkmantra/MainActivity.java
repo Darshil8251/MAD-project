@@ -11,40 +11,72 @@ import android.os.Bundle;
 import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
     private static final int SEND_SMS_PERMISSION_CODE =100;
     Button sendotp;
+    EditText number;
+    String no,otp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        number=findViewById(R.id.Number);
+
         sendotp=findViewById(R.id.sendotp);
         sendotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                SendSMS();
-                Intent intent=new Intent(getApplicationContext(),otpverification.class);
-                startActivity(intent);
+                no = number.getText().toString();
+
+
+                    if(no==null){
+                        Toast.makeText(MainActivity.this,"Given null number",Toast.LENGTH_LONG).show();
+                    }
+                SendSMS(no);
+                    Intent intent=new Intent(getApplicationContext(),otpverification.class);
+                    intent.putExtra("NUMBER",no);
+                    intent.putExtra("OTP",otp);
+                    startActivity(intent);
+
             }
         });
     }
-    private void SendSMS() {
+
+
+    private String generateAndSendOTP() {
+        // Generate a random 6-digit OTP
+        Random random = new Random();
+        int otp = 100000 + random.nextInt(900000);
+         return String.valueOf(otp);
+
+    }
+    private void SendSMS(String no) {
+
         checkPermission(Manifest.permission.SEND_SMS, SEND_SMS_PERMISSION_CODE);
     }
 
-    private void checkPermission(String sendSms, int sendSmsPermissionCode) {
+    public void checkPermission(String sendSms, int sendSmsPermissionCode) {
         if (ContextCompat.checkSelfPermission(MainActivity.this, sendSms) == PackageManager.PERMISSION_DENIED) {
-
-            // Requesting the permission
             ActivityCompat.requestPermissions(MainActivity.this, new String[] { sendSms }, sendSmsPermissionCode);
         }
         else {
             Toast.makeText(MainActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
+            SmsManager smsManager = SmsManager.getDefault();
+            otp=generateAndSendOTP();
+            smsManager.sendTextMessage(no, null, otp, null, null);
+            Toast.makeText(getApplicationContext(), "Message Sent successfully!",
+                    Toast.LENGTH_LONG).show();
         }
     }
+
     public void onRequestPermissionsResult(int requestCode,
                                            @NonNull String[] permissions,
                                            @NonNull int[] grantResults) {
@@ -61,4 +93,10 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
 }
+
+
+
+
+

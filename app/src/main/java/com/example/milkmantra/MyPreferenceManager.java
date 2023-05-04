@@ -58,6 +58,9 @@ public class MyPreferenceManager {
     private static final String KEY_TALUKA_SAVED = "talukasaved";
 
 
+    private  static  final  String KEY_PHONE_NUMBER_SAVED="Phone_Number";
+
+
 
     // Constructor
     public MyPreferenceManager(Context context) {
@@ -102,6 +105,24 @@ public class MyPreferenceManager {
 
         Log.e(TAG, "User is stored in shared preferences. " + user.getName() + ", " + user.getEmail());
     }*/
+
+    public  void storePhnumber(String Number){
+        editor.putString(KEY_PHONE_NUMBER_SAVED,Number);
+        editor.commit();
+    }
+    public String get_PhoneNumber()
+    {
+        if (pref.getString(KEY_PHONE_NUMBER_SAVED, "0") != "0") {
+            String flag;
+            flag = pref.getString(KEY_PHONE_NUMBER_SAVED, "0");
+            return flag;
+        }
+        return "0";
+    }
+    public void storeFlage(String flag){
+        editor.putString("flag",flag);
+        editor.commit();
+    }
 
     public void storeUserID(String Id) {
         editor.putString(KEY_USER_ID, Id);
