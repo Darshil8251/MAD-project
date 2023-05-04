@@ -7,8 +7,6 @@
     <uses-permission android:name="android.permission.READ_SMS" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
-
-
     <application
         android:name=".MyApplication_OnlineTransfer"
         android:allowBackup="true"
@@ -61,7 +59,7 @@
             android:theme="@style/myTheme.Milkmantra"
             android:parentActivityName=".customer.home_customer"/>
         <activity
-            android:name=".MainActivity"
+            android:name=".customer.home_customer"
             android:exported="false"
             android:theme="@style/myTheme.Milkmantra"/>
         <activity
@@ -81,7 +79,7 @@
             android:parentActivityName="com.example.milkmantra.MainActivity"/>
 
         <activity
-            android:name=".customer.home_customer"
+            android:name=".MainActivity"
             android:exported="true"
             android:theme="@style/myTheme.Milkmantra">
             <intent-filter>
