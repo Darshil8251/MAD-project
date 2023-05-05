@@ -27,24 +27,26 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        String phNumber=MyApplication_OnlineTransfer.getInstance().getPrefManager().get_PhoneNumber().toString();
+        if(!phNumber.equals("0")){
+            Intent intent=new Intent(this,asking_option.class);
+            startActivity(intent);
+            finish();
+        }
 
         number=findViewById(R.id.Number);
-
         sendotp=findViewById(R.id.sendotp);
         sendotp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 no = number.getText().toString();
-
-
-                    if(no==null){
+                    if(no.equals("")){
                         Toast.makeText(MainActivity.this,"Given null number",Toast.LENGTH_LONG).show();
                     }
-                SendSMS(no);
-                    Intent intent=new Intent(getApplicationContext(),otpverification.class);
-                    intent.putExtra("NUMBER",no);
-                    intent.putExtra("OTP",otp);
-                    startActivity(intent);
+                    else{
+                        SendSMS(no);
+                    }
+
 
             }
         });
@@ -70,10 +72,17 @@ public class MainActivity extends AppCompatActivity {
         else {
             Toast.makeText(MainActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
             SmsManager smsManager = SmsManager.getDefault();
+
             otp=generateAndSendOTP();
             smsManager.sendTextMessage(no, null, otp, null, null);
             Toast.makeText(getApplicationContext(), "Message Sent successfully!",
                     Toast.LENGTH_LONG).show();
+
+            Intent intent=new Intent(getApplicationContext(),otpverification.class);
+            intent.putExtra("NUMBER",no);
+            intent.putExtra("OTP",otp);
+            startActivity(intent);
+
         }
     }
 
@@ -87,6 +96,17 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == SEND_SMS_PERMISSION_CODE) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(MainActivity.this, "SMS Permission Granted", Toast.LENGTH_SHORT).show();
+                SmsManager smsManager = SmsManager.getDefault();
+                otp=generateAndSendOTP();
+                smsManager.sendTextMessage(no, null, otp, null, null);
+                Toast.makeText(getApplicationContext(), "Message Sent successfully!",
+                        Toast.LENGTH_LONG).show();
+
+                Intent intent=new Intent(getApplicationContext(),otpverification.class);
+                intent.putExtra("NUMBER",no);
+                intent.putExtra("OTP",otp);
+                startActivity(intent);
+
             } else {
                 Toast.makeText(MainActivity.this, "SMS Permission Denied", Toast.LENGTH_SHORT).show();
             }
