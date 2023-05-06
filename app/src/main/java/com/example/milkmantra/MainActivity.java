@@ -32,12 +32,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        /*String phNumber=MyApplication_OnlineTransfer.getInstance().getPrefManager().get_PhoneNumber().toString();
-        if(!phNumber.equals("0")){
-            Intent intent=new Intent(this,asking_option.class);
-            startActivity(intent);
-            finish();
-        }*/
 
         // it is for the validation of user
 
@@ -113,14 +107,10 @@ public class MainActivity extends AppCompatActivity {
             ActivityCompat.requestPermissions(MainActivity.this, new String[] { sendSms }, sendSmsPermissionCode);
         }
         else {
-            Toast.makeText(MainActivity.this, "Permission already granted", Toast.LENGTH_SHORT).show();
-            SmsManager smsManager = SmsManager.getDefault();
 
+            SmsManager smsManager = SmsManager.getDefault();
             otp=generateAndSendOTP();
             smsManager.sendTextMessage(no, null, otp, null, null);
-            Toast.makeText(getApplicationContext(), "Message Sent successfully!",
-                    Toast.LENGTH_LONG).show();
-
             Intent intent=new Intent(getApplicationContext(),otpverification.class);
             intent.putExtra("NUMBER",no);
             intent.putExtra("OTP",otp);

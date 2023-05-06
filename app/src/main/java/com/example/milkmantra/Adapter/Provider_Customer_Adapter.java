@@ -12,7 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.PopupWindow;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,8 +45,8 @@ public class Provider_Customer_Adapter extends   RecyclerView.Adapter<Provider_C
         notifyDataSetChanged();
     }
 
-    public void add(Customer_Add_Provider_model s) {
-        //customer_list.add(s);
+    public void add(Custom_Provider_Home s) {
+        customer_list.add(s);
         notifyDataSetChanged();
     }
 
@@ -64,48 +66,24 @@ public class Provider_Customer_Adapter extends   RecyclerView.Adapter<Provider_C
 
     @Override
     public void onBindViewHolder(@NonNull Provider_Customer_Adapter.ViewHolder viewHolder, int i) {
-        ViewHolder.number.setText(customer_list.get(i).getNo());
-        viewHolder.name.setText(customer_list.get(i).getName());
-
-        viewHolder.order.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-              showPopup(view);
-            }
-
-            private void showPopup(View view) {
-
-                    AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                    View dialogView = LayoutInflater.from(context).inflate(R.layout.provider_order_popup, null);
-                    builder.setView(dialogView);
-
-                    final AlertDialog dialog = builder.create();
+       viewHolder.textCustomerName.setText(customer_list.get(i).getCustomerName());
+       viewHolder.textCustomerId.setText( customer_list.get(i).getCustomerId());
+        viewHolder.edtCustomer_Morning_Cow.setText( customer_list.get(i).getCustomerMorningCowVolume());
+        viewHolder.edtCustomer_Morning_Buffelow.setText( customer_list.get(i).getCustomerMorningBuffelowVolume());
+        viewHolder.edtCustomer_Morning_Other.setText(customer_list.get(i).getCustomerMorningOtherVolume());
+        viewHolder.edtCustomer_Evening_Cow.setText( customer_list.get(i).getCustomerEveningCowVolume());
+        viewHolder.edtCustomer_Evening_Buffelow.setText( customer_list.get(i).getCustomerEveningBuffelowVolume());
+        viewHolder.edtCustomer_Evening_Other.setText( customer_list.get(i).getCustomerEveningOtherVolume());
 
 
+        // here handle The Vacation Mode of Customer
 
-                    Button cancelButton = dialogView.findViewById(R.id.Denied);
-                    cancelButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            dialog.dismiss();
-                        }
-                    });
-
-                    Button confirmButton = dialogView.findViewById(R.id.Accept);
-                    confirmButton.setOnClickListener(new View.OnClickListener() {
-                        @Override
-                        public void onClick(View view) {
-                            // Perform action for skipping
-                            dialog.dismiss();
-
-                        }
-                    });
-                dialog.setCanceledOnTouchOutside(false);
-
-                    dialog.show();
-                }
-
-        });
+        if(customer_list.get(i).getCustomerVacationMode().equals("0")){
+            viewHolder.Customer_Vacation_Mode.setChecked(true);
+        }
+        else {
+            viewHolder.Customer_Vacation_Mode.setChecked(false);
+        }
 
     }
 
@@ -115,14 +93,25 @@ public class Provider_Customer_Adapter extends   RecyclerView.Adapter<Provider_C
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView name;
-        static TextView number;
-        Button order;
+        TextView textCustomerName,textCustomerId;
+        EditText edtCustomer_Morning_Cow,edtCustomer_Morning_Buffelow,edtCustomer_Morning_Other,edtCustomer_Evening_Cow,
+                edtCustomer_Evening_Buffelow,edtCustomer_Evening_Other;
+
+        Button btnCustomerAccept,btnCustomerDenied;
+        Switch Customer_Vacation_Mode;
           public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            name=itemView.findViewById(R.id.Name);
-            number=itemView.findViewById(R.id.Number);
-            order=itemView.findViewById(R.id.Order);
+           textCustomerName=itemView.findViewById(R.id.CustomerName);
+              textCustomerId=itemView.findViewById(R.id.CustomerId);
+              edtCustomer_Morning_Cow=itemView.findViewById(R.id.Customer_Morning_Cow);
+              edtCustomer_Morning_Buffelow=itemView.findViewById(R.id.Customer_Morning_Buffelow);
+              edtCustomer_Morning_Other=itemView.findViewById(R.id.Customer_Morning_Other);
+              edtCustomer_Evening_Cow=itemView.findViewById(R.id.Customer_Evening_Cow);
+              edtCustomer_Evening_Buffelow=itemView.findViewById(R.id.Customer_Evening_Buffelow);
+              edtCustomer_Evening_Other=itemView.findViewById(R.id.Customer_Evening_Other);
+              btnCustomerAccept=itemView.findViewById(R.id.CustomerAccept);
+              btnCustomerDenied=itemView.findViewById(R.id.CustomerDenied);
+              Customer_Vacation_Mode=itemView.findViewById(R.id.Customer_Vacation_Mode);
         }
     }
 }

@@ -7,5 +7,7 @@ public class EndPoints {
 
     public static final String ADD_PROVIDER="http://meteorrider.socialstuf.com/milkmantra/v1/index_v2.php/create_provider";
 
+    public  static  final  String CUSTOMER_PROVIDER_ASSOCIATION="http://meteorrider.socialstuf.com/milkmantra/v1/index_v2.php/get_customer_provider_association_with_milk_details";
+
 
 }

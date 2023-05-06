@@ -100,6 +100,8 @@ public class Provider_Selection_Adapter extends RecyclerView.Adapter<Provider_Se
         viewHolder.lblProvider_id.setText(provider_selections.get(i).getProvider_id());
 
 
+
+
     }
 
     // here we have specifing the size of list
@@ -147,7 +149,7 @@ public class Provider_Selection_Adapter extends RecyclerView.Adapter<Provider_Se
                     // check for Internet status
                     if (isInternetPresent) {
 
-                        // Toast.makeText(context, "Name " + name + "Email " + email + " phonenumber " + phonenumber + " maincity " + maincity, Toast.LENGTH_SHORT).show();
+
                         StringRequest strReq = new StringRequest(Request.Method.POST,
                                 EndPoints.SAVE_PROVIDER, new Response.Listener<String>() {
                             @Override
