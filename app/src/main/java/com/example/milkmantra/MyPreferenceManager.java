@@ -2,7 +2,6 @@ package com.example.milkmantra;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.util.Log;
 
 public class MyPreferenceManager {
 
@@ -23,42 +22,44 @@ public class MyPreferenceManager {
     // Sharedpref file name
     //id, name, email, dob,home_Address, phone_number, Current_place, Transplace1, Transplace2, Transplace3, Transplace4, Transplace5, sex, marrital_status
     private static final String PREF_NAME = "Transfer_Teacher";
-    private static final String KEY_USER_ID = "user_id";
-    private static final String KEY_USER_NAME = "user_name";
-    private static final String KEY_USER_EMAIL = "user_college";
-    private static final String KEY_USER_DOB = "user_dob";
-    private static final String KEY_USER_HOME_ADDRESS = "user_home_address";
-    private static final String KEY_USER_PHONE = "user_phone";
 
-    private static final String KEY_USER_CURRENT_PLACE = "current_place";
 
-    private static final String KEY_USER_TRANS_PLACE_1 = "trans_place_1";
-    private static final String KEY_USER_TRANS_PLACE_2 = "trans_place_2";
-    private static final String KEY_USER_TRANS_PLACE_3 = "trans_place_3";
-    private static final String KEY_USER_TRANS_PLACE_4 = "trans_place_4";
-    private static final String KEY_USER_TRANS_PLACE_5 = "trans_place_5";
-
-    private static final String KEY_USER_CURRENT_DIST = "current_dist";
-    private static final String KEY_USER_DIST_TO_TRANSFER = "dist_to_transfer";
-
-    private static final String KEY_USER_Q1 = "current_q1";
-    private static final String KEY_USER_Q2= "current_q2";
-    private static final String KEY_USER_Q3= "current_q3";
-
-    private static final String KEY_USER_CURRENT_TALUKA = "current_taluka";
-    private static final String KEY_USER_TALUKA_TO_TRANSFER = "taluka_to_transfer";
-
-    private static final String KEY_USER_LEVEL = "level";
-    private static final String KEY_USER_SUBJECT_IN_LEVEL= "subject_in_level";
-
-    private static final String KEY_UNREAD_COUNT = "unreadcount";
-    private static final String KEY_LAST_MESSAGE = "lastmessage";
-    private static final String KEY_NOTIFICATIONS = "notifications";
-    private static final String KEY_DATA_PRIVACY = "dataprivacy";
-    private static final String KEY_TALUKA_SAVED = "talukasaved";
 
 
     private  static  final  String KEY_PHONE_NUMBER_SAVED="Phone_Number";
+    private  static  final  String KEY_FLAG_SAVED="Flag";
+
+    private  static  final  String KEY_CUSTOMER_NAME_SAVED="Customer_Name";
+    private  static  final  String KEY_CUSTOMER_PINCODE_SAVED="Customer_Pincode";
+    private  static  final  String KEY_CUSTOMER_ADDRESS_SAVED="Customer_Address";
+    private  static  final  String KEY_CUSTOMER_MOBILE_NUMBER_SAVED="Custo";
+
+    private  static  final  String KEY_PROVIDER_ID_SAVED="Provider_Id";
+
+    private  static  final  String KEY_PROVIDER_NAME_SAVED="Provider_Name";
+
+    private  static  final  String KEY_PROVIDER_PHONE_NUMBER_SAVED="Provider_Phone_Number";
+
+    private  static  final  String KEY_PROVIDER_PINCODE_SAVED="Provider_Pincode";
+
+    private  static  final  String KEY_PROVIDER_ADDRESS_SAVED="Provider_Address";
+
+    private  static  final  String KEY_PROVIDER_VACATION_MODE_SAVED="Provider_Vacation_Mode";
+
+    private  static  final  String KEY_PROVIDER_QR_CODE_SAVED="Provider_Qr_Code";
+
+    private  static  final  String KEY_PROVIDER_IS_ACTIVE_SAVED="Provider_Is_Active";
+
+    private  static  final  String KEY_PROVIDER_TIME_STAMP_SAVED="Provider_Time_Stamp";
+
+    private  static  final  String KEY_PROVIDER_REMARK_SAVED="Provider_Remark";
+
+    private  static  final  String KEY_PROVIDER_RESERVE1_SAVED="Provider_Reserve1";
+
+    private  static  final  String KEY_PROVIDER_RESERVE2_SAVED="Provider_Reserve2";
+
+    private  static  final  String KEY_PROVIDER_RESERVE3_SAVED="Provider_Reserve3";
+
 
 
 
@@ -69,42 +70,7 @@ public class MyPreferenceManager {
         editor = pref.edit();
     }
 
- /*
-    public void storeUser(User user)
-    {
-       editor.putString(KEY_USER_ID, user.getId());
-        editor.putString(KEY_USER_NAME, user.getName());
-        editor.putString(KEY_USER_EMAIL, user.getEmail());
 
-        editor.putString(KEY_USER_DOB, user.getdob());
-        editor.putString(KEY_USER_HOME_ADDRESS, user.gethome_Address());
-        editor.putString(KEY_USER_PHONE, user.getphone_number());
-
-        editor.putString(KEY_USER_CURRENT_PLACE, user.getCurrent_place());
-
-        editor.putString(KEY_USER_TRANS_PLACE_1, user.getTransplace1());
-        editor.putString(KEY_USER_TRANS_PLACE_2, user.getTransplace2());
-        editor.putString(KEY_USER_TRANS_PLACE_3, user.getTransplace3());
-        editor.putString(KEY_USER_TRANS_PLACE_4, user.getTransplace4());
-        editor.putString(KEY_USER_TRANS_PLACE_5, user.getTransplace5());
-
-        editor.putString(KEY_USER_CURRENT_DIST, user.getcurrent_dist());
-        editor.putString(KEY_USER_DIST_TO_TRANSFER, user.getdist_to_transfer());
-
-        editor.putString(KEY_USER_Q1, user.getq1());
-        editor.putString(KEY_USER_Q2, user.getq2());
-        editor.putString(KEY_USER_Q3, user.getq3());
-
-        editor.putString(KEY_USER_CURRENT_TALUKA, user.gettaluka_current());
-        editor.putString(KEY_USER_TALUKA_TO_TRANSFER, user.gettaluka_to_transfer());
-
-        editor.putString(KEY_USER_LEVEL, user.getlevel());
-        editor.putString(KEY_USER_SUBJECT_IN_LEVEL, user.getlevel_subject());
-
-        editor.commit();
-
-        Log.e(TAG, "User is stored in shared preferences. " + user.getName() + ", " + user.getEmail());
-    }*/
 
     public  void storePhnumber(String Number){
         editor.putString(KEY_PHONE_NUMBER_SAVED,Number);
@@ -120,166 +86,152 @@ public class MyPreferenceManager {
         return "0";
     }
     public void storeFlage(String flag){
-        editor.putString("flag",flag);
+        editor.putString(KEY_FLAG_SAVED,flag);
         editor.commit();
     }
 
-    public void storeUserID(String Id) {
-        editor.putString(KEY_USER_ID, Id);
+    public  String  get_flage(){
+        return pref.getString(KEY_FLAG_SAVED,"0");
+    }
+
+
+    public  void storeCustomer(String Number,String Pincode,String Address,String Name) {
+        editor.putString(KEY_CUSTOMER_MOBILE_NUMBER_SAVED, Number);
+        editor.putString(KEY_CUSTOMER_NAME_SAVED, Name);
+        editor.putString(KEY_CUSTOMER_PINCODE_SAVED, Pincode);
+        editor.putString(KEY_CUSTOMER_ADDRESS_SAVED, Address);
+        editor.commit();
+
+    }
+
+
+    public String get_Customer_Phone_Number(){
+        return pref.getString(KEY_CUSTOMER_MOBILE_NUMBER_SAVED,"");
+    }
+    public String get_Customer_Name(){
+        return pref.getString(KEY_CUSTOMER_NAME_SAVED,"");
+    }
+
+    public String get_Customer_Pincode(){
+        return pref.getString(KEY_CUSTOMER_PINCODE_SAVED,"");
+    }
+
+    public String get_Customer_Address(){
+        return pref.getString(KEY_CUSTOMER_ADDRESS_SAVED,"");
+    }
+
+
+    public void set_Provider_id(String provider_id){
+        editor.putString(KEY_PROVIDER_ID_SAVED,provider_id);
         editor.commit();
     }
 
-   /* public User getUser() {
-        String id, name, email, dob, home_Address, phone_number, Current_place, Transplace1, Transplace2, Transplace3, Transplace4, Transplace5, sex, marrital_status,current_dist,dist_to_transfer,q1,q2,q3,current_taluka,taluka_to_transfer,level,subject_in_level;
-        id = pref.getString(KEY_USER_ID, "0");
-        name = pref.getString(KEY_USER_NAME, "");
-        email = pref.getString(KEY_USER_EMAIL, "");
+    public void set_Provider_Name(String provider_Name){
+        editor.putString(KEY_PROVIDER_NAME_SAVED,provider_Name);
+        editor.commit();
+    }
 
-        dob = pref.getString(KEY_USER_DOB, "");
-        home_Address = pref.getString(KEY_USER_HOME_ADDRESS, "");
-        phone_number = pref.getString(KEY_USER_PHONE, "");
+    public  void  set_Provider_Phone(String provider_phone){
+        editor.putString(KEY_PROVIDER_PHONE_NUMBER_SAVED,provider_phone);
+        editor.commit();
+    }
 
-        Current_place = pref.getString(KEY_USER_CURRENT_PLACE, "");
+    public  void set_Provider_Pincode(String provider_pincode){
+        editor.putString(KEY_PROVIDER_PINCODE_SAVED,provider_pincode);
+        editor.commit();
+    }
 
-        Transplace1 = pref.getString(KEY_USER_TRANS_PLACE_1, "");
-        Transplace2 = pref.getString(KEY_USER_TRANS_PLACE_2, "");
-        Transplace3 = pref.getString(KEY_USER_TRANS_PLACE_3, "");
-        Transplace4 = pref.getString(KEY_USER_TRANS_PLACE_4, "");
-        Transplace5 = pref.getString(KEY_USER_TRANS_PLACE_5, "");
+    public  void set_Provider_Address(String provider_address){
+        editor.putString(KEY_PROVIDER_ADDRESS_SAVED,provider_address);
+        editor.commit();
+    }
+    public  void set_Provider_Vacation_Mode(String provider_vacation_mode){
+        editor.putString(KEY_PROVIDER_PINCODE_SAVED,provider_vacation_mode);
+        editor.commit();
+    }
 
-        current_dist = pref.getString(KEY_USER_CURRENT_DIST, "0");
-        dist_to_transfer = pref.getString(KEY_USER_DIST_TO_TRANSFER, "0");
 
-        q1= pref.getString(KEY_USER_Q1, "");
-        q2 = pref.getString(KEY_USER_Q2, "");
-        q3 = pref.getString(KEY_USER_Q3, "");
+    public  void set_Provider_Qr_Code(String provider_qr_code){
+        editor.putString(KEY_PROVIDER_QR_CODE_SAVED,provider_qr_code);
+        editor.commit();
+    }
 
-        dist_to_transfer = pref.getString(KEY_USER_DIST_TO_TRANSFER, "0");
+    public  void set_Provider_Is_Active(String provider_is_active){
+        editor.putString(KEY_PROVIDER_IS_ACTIVE_SAVED,provider_is_active);
+        editor.commit();
+    }
 
-        q1= pref.getString(KEY_USER_Q1, "");
-        q2 = pref.getString(KEY_USER_Q2, "");
-        q3 = pref.getString(KEY_USER_Q3, "");
+    public  void set_Provider_Time_Stamp(String provider_time_stamp){
+        editor.putString(KEY_PROVIDER_TIME_STAMP_SAVED,provider_time_stamp);
+        editor.commit();
+    }
 
-        current_taluka= pref.getString(KEY_USER_CURRENT_TALUKA, "0");
-        taluka_to_transfer= pref.getString(KEY_USER_TALUKA_TO_TRANSFER, "0");
-        level= pref.getString(KEY_USER_LEVEL, "0");
-        subject_in_level= pref.getString(KEY_USER_SUBJECT_IN_LEVEL, "0");
+    public  String get_Provider_Id(){
+        return  pref.getString(KEY_PROVIDER_ID_SAVED,"");
+    }
 
-        User user = new User(id, name, email, dob, home_Address, phone_number, Current_place, Transplace1, Transplace2, Transplace3, Transplace4, Transplace5, "SEX", "MARITAL",current_dist,dist_to_transfer,q1,q2,q3,current_taluka,taluka_to_transfer,level,subject_in_level);
-        return user;
-    }*/
+    public  String get_Provider_Name(){
+        return  pref.getString(KEY_PROVIDER_NAME_SAVED,"");
+    }
+
+    public  String get_Provider_Phone_Number(){
+        return  pref.getString(KEY_PROVIDER_PHONE_NUMBER_SAVED,"");
+    }
+    public  String get_Provider_Vacation_Mode(){
+        return  pref.getString(KEY_PROVIDER_VACATION_MODE_SAVED,"");
+    }
+
+    public  String get_Provider_Address(){
+        return  pref.getString(KEY_PROVIDER_ADDRESS_SAVED,"");
+    }
+
+    public  String get_Provider_Qr_Code(){
+        return  pref.getString(KEY_PROVIDER_QR_CODE_SAVED,"");
+    }
+
+    public  String get_Provider_Is_Active(){
+        return  pref.getString(KEY_PROVIDER_IS_ACTIVE_SAVED,"");
+    }
+
+    public  String get_Provider_Time_Stamp(){
+        return  pref.getString(KEY_PROVIDER_TIME_STAMP_SAVED,"");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     public void clear() {
         editor.clear();
         editor.commit();
     }
 
-    public void setFirstTimeLaunch(boolean isFirstTime) {
-        editor.putBoolean(IS_FIRST_TIME_LAUNCH, isFirstTime);
-        editor.commit();
-    }
-
-    public void reset_unread_count(String roomid) {
-        editor.putInt(KEY_UNREAD_COUNT + "_" + roomid, 0);
-        editor.commit();
-    }
 
 
-    public int Increament_unread_count(String roomid)
-    {
-        int count;
-        count = pref.getInt(KEY_UNREAD_COUNT + "_" + roomid, 0);
-        count = count +1;
-        store_unread_count(count,roomid);
 
-        return count;
 
-    }
-
-    public void store_unread_count(int count,String roomid) {
-        editor.putInt(KEY_UNREAD_COUNT + "_" + roomid, count);
-        editor.commit();
-    }
-
-    public int get_unread_count(String roomid)
-    {
-        if (pref.getInt(KEY_UNREAD_COUNT + "_" + roomid, 0) != 0) {
-            int count;
-            count = pref.getInt(KEY_UNREAD_COUNT + "_" + roomid, 0);
-            return count;
-        }
-        return 0;
-    }
-
-    public void store_data_privacy_flag(int flag) {
-        editor.putInt(KEY_DATA_PRIVACY, flag);
-        editor.commit();
-    }
-
-    public int get_data_privacy_flag()
-    {
-        if (pref.getInt(KEY_DATA_PRIVACY, 0) != 0) {
-            int flag;
-            flag = pref.getInt(KEY_DATA_PRIVACY, 0);
-            return flag;
-        }
-        return 0;
-    }
-
-    /*GET SET For LAST MESSAGE*/
-    public void store_last_message(String  Message,String roomid)
-    {
-        //Log.v("KEY_roomid[s]", "#" + KEY_LAST_MESSAGE + "_" + roomid);
-        editor.putString(KEY_LAST_MESSAGE + "_" + roomid, Message);
-        editor.commit();
-    }
-
-    public String get_last_message(String roomid)
-    {
-        if (pref.getString(KEY_LAST_MESSAGE + "_" + roomid, null) != null)
-        {
-            String Message= pref.getString(KEY_LAST_MESSAGE + "_" + roomid, null);
-            // Log.v("KEY_roomid[g]", "#" + KEY_LAST_MESSAGE + "_" + roomid + " : " +Message);
-            return Message;
-        }
-        return null;
-    }
-
-    public boolean isFirstTimeLaunch() {
-        return pref.getBoolean(IS_FIRST_TIME_LAUNCH, true);
-    }
-    public void addNotification(String notification) {
-
-        // get old notifications
-        String oldNotifications = getNotifications();
-
-        if (oldNotifications != null) {
-            oldNotifications += "|" + notification;
-        } else {
-            oldNotifications = notification;
-        }
-
-        editor.putString(KEY_NOTIFICATIONS, oldNotifications);
-        editor.commit();
-    }
-
-    public void store_takuka_flag(String flag) {
-        editor.putString(KEY_TALUKA_SAVED, flag);
-        editor.commit();
-    }
-
-    public String get_taluka_flag()
-    {
-        if (pref.getString(KEY_TALUKA_SAVED, "0") != "0") {
-            String flag;
-            flag = pref.getString(KEY_TALUKA_SAVED, "0");
-            return flag;
-        }
-        return "0";
-    }
-
-    public String getNotifications() {
-        return pref.getString(KEY_NOTIFICATIONS, null);
-    }
 
 }

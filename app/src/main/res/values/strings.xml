@@ -42,7 +42,9 @@ Your moblie no. +91 --------</string>
     <!-- start provider text-->
     <string name="pc_unique_number">Enter The Number</string>
     <string name="account_Verification">Account Verification!</string>
-    <string name="acc_ver_message">Your Account Verify Successfully,Please Press Continue </string>
+    <string name="account_Not_Verification">Sorry,But Your Account Not Verified</string>
+    <string name="acc_ver_message">If You Wanna Verifiy Your Account then please call </string>
+    <string name="Account_Verification_Message">If You Want to Verify Account then Please Call </string>
     <string name="btn_continue">Continue</string>
     <string name="CNumber">Enter Customer Number</string>
     <string name="view">View</string>

@@ -39,7 +39,7 @@
             />
 
         <ImageView
-            android:id="@+id/call"
+            android:id="@+id/CallProvider"
             android:layout_width="75dp"
             android:layout_height="66dp"
             android:src="@drawable/call"
@@ -57,7 +57,7 @@
             />
 
         <Button
-            android:id="@+id/skip"
+            android:id="@+id/SkipCustomer"
             android:layout_width="271dp"
             android:layout_height="43dp"
             android:layout_gravity="center"

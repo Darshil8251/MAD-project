@@ -24,7 +24,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class create_account_customer extends AppCompatActivity {
-    private EditText customer_name,customer_phone,customer_pincode,customer_address;
+    private EditText edt_customer_name,edt_customer_phone,edt_customer_pincode,edt_customer_address;
     private Button register;
     Toolbar toolbar;
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +32,7 @@ public class create_account_customer extends AppCompatActivity {
         setContentView(R.layout.activity_create_account_customer);
 
 
-        // it is handle
+        // it is handle toolbar of create account
 
         toolbar=findViewById(R.id.CustomerRegistrationToolbar);
         setSupportActionBar(toolbar);
@@ -42,10 +42,11 @@ public class create_account_customer extends AppCompatActivity {
         }
 
 
-        customer_name = findViewById(R.id.Name);
-        customer_phone = findViewById(R.id.Phone_Number);
-        customer_pincode = findViewById(R.id.Pincode);
-        customer_address = findViewById(R.id.Address);
+        //take the value from edit text
+        edt_customer_name = findViewById(R.id.Name);
+        edt_customer_phone = findViewById(R.id.Phone_Number);
+        edt_customer_pincode = findViewById(R.id.Pincode);
+        edt_customer_address = findViewById(R.id.Address);
         register = findViewById(R.id.register);
 
         // adding on click listener to our button.
@@ -53,12 +54,16 @@ public class create_account_customer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // validating if the text field is empty or not.
-                if (customer_name.getText().toString().isEmpty() && customer_address.getText().toString().isEmpty()) {
-                    Toast.makeText(create_account_customer.this, "Please enter both the values", Toast.LENGTH_SHORT).show();
-                    return;
+                if (edt_customer_name.getText().toString().isEmpty() && edt_customer_address.getText().toString().isEmpty() && edt_customer_pincode.getText().toString().isEmpty() && edt_customer_phone.getText().toString().isEmpty()) {
+                    Toast.makeText(create_account_customer.this, "Please enter all the Detail Proper", Toast.LENGTH_SHORT).show();
+
                 }
+
                 // calling a method to post the data and passing our name and job.
-                postDataUsingVolley(customer_name.getText().toString(),customer_phone.getText().toString(),customer_pincode.getText().toString(),customer_address.getText().toString());
+                else {
+
+                    postDataUsingVolley(edt_customer_name.getText().toString(), edt_customer_phone.getText().toString(), edt_customer_pincode.getText().toString(), edt_customer_address.getText().toString());
+                }
             }
         });
 
@@ -78,10 +83,10 @@ public class create_account_customer extends AppCompatActivity {
 
 
 //        // Setting the fetched data in the EditTexts
-        customer_name.setText(cname);
-        customer_phone.setText(String.valueOf(contact));
-        customer_pincode.setText(String.valueOf(cpincode));
-        customer_address.setText(caddress);
+        edt_customer_name.setText(cname);
+        edt_customer_phone.setText(String.valueOf(contact));
+        edt_customer_pincode.setText(String.valueOf(cpincode));
+        edt_customer_address.setText(caddress);
 
     }
 
@@ -95,10 +100,10 @@ public class create_account_customer extends AppCompatActivity {
         SharedPreferences.Editor myEdit = sharedPreferences.edit();
 //
 //        // write all the data entered by the user in SharedPreference and apply
-        myEdit.putString("name", customer_name.getText().toString());
-        myEdit.putInt("contact", Integer.parseInt(customer_phone.getText().toString()));
-        myEdit.putString("address", customer_address.getText().toString());
-        myEdit.putInt("pincode", Integer.parseInt(customer_pincode.getText().toString()));
+        myEdit.putString("name", edt_customer_name.getText().toString());
+        myEdit.putInt("contact", Integer.parseInt(edt_customer_phone.getText().toString()));
+        myEdit.putString("address", edt_customer_address.getText().toString());
+        myEdit.putInt("pincode", Integer.parseInt(edt_customer_pincode.getText().toString()));
         myEdit.putBoolean("flage",true);
         myEdit.apply();
 
@@ -116,10 +121,10 @@ public class create_account_customer extends AppCompatActivity {
             @Override
             public void onResponse(String response) {
 
-                customer_name.setText("");
-                customer_address.setText("");
-                customer_pincode.setText("");
-                customer_phone.setText("");
+                edt_customer_name.setText("");
+                edt_customer_address.setText("");
+                edt_customer_pincode.setText("");
+                edt_customer_phone.setText("");
 
 
                 Toast.makeText(create_account_customer.this, "Data added to API", Toast.LENGTH_SHORT).show();
@@ -137,10 +142,10 @@ public class create_account_customer extends AppCompatActivity {
                     SharedPreferences.Editor myEdit = sharedPreferences.edit();
 //
 //        // write all the data entered by the user in SharedPreference and apply
-                    myEdit.putString("name", customer_name.getText().toString());
-                    myEdit.putInt("contact", Integer.parseInt(customer_phone.getText().toString()));
-                    myEdit.putString("address", customer_address.getText().toString());
-                    myEdit.putInt("pincode", Integer.parseInt(customer_pincode.getText().toString()));
+                    myEdit.putString("name", edt_customer_name.getText().toString());
+                    myEdit.putInt("contact", Integer.parseInt(edt_customer_phone.getText().toString()));
+                    myEdit.putString("address", edt_customer_address.getText().toString());
+                    myEdit.putInt("pincode", Integer.parseInt(edt_customer_pincode.getText().toString()));
                     myEdit.apply();
 
 

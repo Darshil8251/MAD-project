@@ -14,6 +14,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.milkmantra.customer.home_customer;
+import com.example.milkmantra.provider.provider_home;
+
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
@@ -27,13 +30,46 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        String phNumber=MyApplication_OnlineTransfer.getInstance().getPrefManager().get_PhoneNumber().toString();
+
+
+        /*String phNumber=MyApplication_OnlineTransfer.getInstance().getPrefManager().get_PhoneNumber().toString();
         if(!phNumber.equals("0")){
+            Intent intent=new Intent(this,asking_option.class);
+            startActivity(intent);
+            finish();
+        }*/
+
+        // it is for the validation of user
+
+        String flag=MyApplication_OnlineTransfer.getInstance().getPrefManager().get_flage();
+
+        // if user is register
+        if(flag.equals("0")){
             Intent intent=new Intent(this,asking_option.class);
             startActivity(intent);
             finish();
         }
 
+        // if user is admin
+        else if(flag.equals("1")){
+            // here admin pannel display
+        }
+        // if user is customer
+        else if(flag.equals("2")){
+            Intent intent=new Intent(this, home_customer.class);
+            startActivity(intent);
+            finish();
+        }
+
+        // if user is provider
+        else if(flag.equals("3")){
+            Intent intent=new Intent(this, provider_home.class);
+            startActivity(intent);
+            finish();
+        }
+
+
+        // it for otp verification
         number=findViewById(R.id.Number);
         sendotp=findViewById(R.id.sendotp);
         sendotp.setOnClickListener(new View.OnClickListener() {
@@ -53,6 +89,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+
+    // This function generate 6 digit otp
     private String generateAndSendOTP() {
         // Generate a random 6-digit OTP
         Random random = new Random();
@@ -60,10 +98,15 @@ public class MainActivity extends AppCompatActivity {
          return String.valueOf(otp);
 
     }
+    // this function use for sending SMS to user
     private void SendSMS(String no) {
 
         checkPermission(Manifest.permission.SEND_SMS, SEND_SMS_PERMISSION_CODE);
     }
+
+
+
+    // this function check the permission if not given take and send the otp
 
     public void checkPermission(String sendSms, int sendSmsPermissionCode) {
         if (ContextCompat.checkSelfPermission(MainActivity.this, sendSms) == PackageManager.PERMISSION_DENIED) {

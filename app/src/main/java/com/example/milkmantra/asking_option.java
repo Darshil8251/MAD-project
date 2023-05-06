@@ -21,16 +21,10 @@ public class asking_option extends AppCompatActivity {
         setContentView(R.layout.activity_asking_option);
 
 
-        skip=findViewById(R.id.skip);
-        call=findViewById(R.id.call);
+        skip=findViewById(R.id.SkipCustomer);
+        call=findViewById(R.id.CallProvider);
 
 
-        skip.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showSkipDialog();
-            }
-        });
 
         call.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,11 +33,19 @@ public class asking_option extends AppCompatActivity {
             }
 
             private void provider_start() {
-                Intent intent=new Intent(getApplicationContext(), provider_verification_page.class);
+                Intent intent=new Intent(asking_option.this, provider_verification_page.class);
                 startActivity(intent);
             }
         });
 
+
+        // if user press the skip button means user be customer take the permission
+        skip.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showSkipDialog();
+            }
+        });
 
 
 
