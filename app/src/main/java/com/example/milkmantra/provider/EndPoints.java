@@ -10,4 +10,6 @@ public class EndPoints {
     public  static  final  String CUSTOMER_PROVIDER_ASSOCIATION="http://meteorrider.socialstuf.com/milkmantra/v1/index_v2.php/get_customer_provider_association_with_milk_details";
 
 
+    public  static  final String PROVIDER_ACCEPT_ORDERED="http://meteorrider.socialstuf.com/milkmantra/v1/index_v2.php/create_transaction";
+
 }

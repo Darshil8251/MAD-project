@@ -173,7 +173,7 @@ public class provider_home extends AppCompatActivity {
 
                                     ObjUsr.setCustomerMorningCowVolume(randomuserObj.getString("customer_morning_cow_volume"));
                                     ObjUsr.setCustomerMorningBuffelowVolume(randomuserObj.getString("customer_morning_buffelo_volume"));
-                                    ObjUsr.setCustomerName(randomuserObj.getString("customer_name"));
+                                    ObjUsr.setCustomerMorningOtherVolume(randomuserObj.getString("customer_morning_other_volume"));
 
 
                                     ObjUsr.setCustomerEveningCowVolume(randomuserObj.getString("customer_evening_cow_volume"));
