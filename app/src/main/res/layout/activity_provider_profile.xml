@@ -48,9 +48,9 @@
                 android:textSize="12dp" />
 
             <TextView
+                android:id="@+id/ProviderName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Mayank Patel"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
         </LinearLayout>
@@ -69,9 +69,9 @@
                 android:textSize="12dp" />
 
             <TextView
+                android:id="@+id/ProviderAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="BH 1,VGEC,CHANDKHEDA"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
         </LinearLayout>
@@ -90,9 +90,9 @@
                 android:textSize="12dp" />
 
             <TextView
+                android:id="@+id/ProviderPincode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="382424"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
         </LinearLayout>
@@ -112,9 +112,9 @@
                 android:textSize="12dp" />
 
             <TextView
+                android:id="@+id/ProviderPhoneNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="9929455631"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
         </LinearLayout>
@@ -132,9 +132,9 @@
                 android:textSize="12dp" />
 
             <TextView
+                android:id="@+id/ProviderArea"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Motera"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
         </LinearLayout>

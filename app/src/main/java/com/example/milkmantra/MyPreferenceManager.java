@@ -67,6 +67,11 @@ public class MyPreferenceManager {
 
     private  static  final  String KEY_PROVIDER_TIME_STAMP_SAVED="Provider_Time_Stamp";
 
+
+    private  static  final  String KEY_PROVIDER_AREA_SAVED="Provider_Area";
+
+
+
     private  static  final  String KEY_PROVIDER_REMARK_SAVED="Provider_Remark";
 
     private  static  final  String KEY_PROVIDER_RESERVE1_SAVED="Provider_Reserve1";
@@ -110,6 +115,8 @@ public class MyPreferenceManager {
     }
 
 
+
+    
     public  void set_Customer_Id(String Customer_Id){
         editor.putString(KEY_CUSTOMER_ID_SAVED,Customer_Id);
         editor.commit();
@@ -193,9 +200,7 @@ public class MyPreferenceManager {
 
 
 
-
-
-
+    // it provider setter
 
 
     public void set_Provider_id(String provider_id){
@@ -243,6 +248,17 @@ public class MyPreferenceManager {
         editor.commit();
     }
 
+
+    public  void set_Provider_Area(String provider_Area){
+        editor.putString(KEY_PROVIDER_AREA_SAVED,provider_Area);
+        editor.commit();
+    }
+
+
+
+    // provider getter
+
+
     public  String get_Provider_Id(){
         return  pref.getString(KEY_PROVIDER_ID_SAVED,"");
     }
@@ -272,6 +288,16 @@ public class MyPreferenceManager {
 
     public  String get_Provider_Time_Stamp(){
         return  pref.getString(KEY_PROVIDER_TIME_STAMP_SAVED,"");
+    }
+
+
+    public  String get_Provider_Pincode(){
+        return  pref.getString(KEY_PROVIDER_PINCODE_SAVED,"");
+    }
+
+
+    public  String get_Provider_Area(){
+        return  pref.getString(KEY_PROVIDER_AREA_SAVED,"");
     }
 
 

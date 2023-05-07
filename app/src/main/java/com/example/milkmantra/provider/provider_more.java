@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.example.milkmantra.MainActivity;
+import com.example.milkmantra.MyApplication_OnlineTransfer;
 import com.example.milkmantra.R;
 
 public class provider_more extends AppCompatActivity {
@@ -43,8 +44,9 @@ public class provider_more extends AppCompatActivity {
         logout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intet =new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intet);
+                MyApplication_OnlineTransfer.getInstance().getPrefManager().clear();
+                Intent intent =new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
             }
         });
 

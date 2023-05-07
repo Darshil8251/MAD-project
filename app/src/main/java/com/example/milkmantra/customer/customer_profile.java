@@ -9,19 +9,27 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.milkmantra.MainActivity;
+import com.example.milkmantra.MyApplication_OnlineTransfer;
 import com.example.milkmantra.R;
 
 public class customer_profile extends AppCompatActivity {
-    Button logout;
+    Button Customerlogout;
     ImageView edit_profile;
+
+    TextView CustomerName,CustomerAddress,CustomerPincode,CustomerArea,CustomerPhoneNumber;
 
     Toolbar toolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_customer_profile);
+
+
+
+        // it is for handling toolbar
 
         toolbar=findViewById(R.id.ProfileToolbar);
         setSupportActionBar(toolbar);
@@ -31,14 +39,31 @@ public class customer_profile extends AppCompatActivity {
         }
 
 
-        logout=findViewById(R.id.Logout);
+
+        // here handling all the field of customer
+
+        CustomerName=findViewById(R.id.CustomerName);
+        CustomerArea=findViewById(R.id.CustomerArea);
+        CustomerPincode=findViewById(R.id.CustomerPincode);
+        CustomerAddress=findViewById(R.id.CustomerAddress);
+        CustomerPhoneNumber=findViewById(R.id.CustomerPhoneNumber);
+
+        CustomerAddress.setText(MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Customer_Address());
+        CustomerName.setText(MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Customer_Name());
+        CustomerPincode.setText(MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Customer_Pincode());
+        CustomerPhoneNumber.setText(MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Customer_Phone_Number());
+
+
+        Customerlogout=findViewById(R.id.CustomerLogout);
+
         edit_profile=findViewById(R.id.EditeProfile);
-        logout.setOnClickListener(new View.OnClickListener() {
+        Customerlogout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 logout();
             }
             private void logout() {
+                MyApplication_OnlineTransfer.getInstance().getPrefManager().clear();
                 Intent intent=new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
             }
