@@ -46,7 +46,7 @@
                 android:layout_marginTop="5dp"/>
 
             <EditText
-                android:id="@+id/Name"
+                android:id="@+id/CustomerName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/transparent"/>
@@ -68,13 +68,13 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"/>
 
-            <EditText
-                android:id="@+id/Phone_Number"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/CustomerNumber"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/transparent"
-                android:inputType="number"
-                android:layout_gravity="center"/>
+                android:layout_gravity="center"
+                />
 
         </LinearLayout>
 
@@ -94,7 +94,7 @@
                 android:layout_marginTop="5dp"/>
 
             <EditText
-                android:id="@+id/Pincode"
+                android:id="@+id/CustomerPincode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/transparent"
@@ -119,7 +119,7 @@
                 android:layout_marginTop="5dp"/>
 
             <EditText
-                android:id="@+id/Address"
+                android:id="@+id/CustomerAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@android:color/transparent"
@@ -129,7 +129,7 @@
         </LinearLayout>
 
         <Button
-            android:id="@+id/register"
+            android:id="@+id/CustomerRegister"
             android:layout_width="308dp"
             android:layout_height="55dp"
             android:layout_gravity="center"

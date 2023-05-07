@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -45,6 +46,7 @@ public class home_customer extends AppCompatActivity {
  ImageView profile;
  Toolbar toolbar;
  SearchView searchView;
+ TextView textCustomerId;
 
     ConnectionDetector cd;
     Boolean isInternetPresent=false;
@@ -55,6 +57,9 @@ public class home_customer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_customer);
 
+
+
+        // it is for toolbar
         toolbar=findViewById(R.id.HomeToolbar);
         setSupportActionBar(toolbar);
 
@@ -62,6 +67,17 @@ public class home_customer extends AppCompatActivity {
             getSupportActionBar().setTitle("Home");
         }
         adapter_fb = new Provider_Selection_Adapter(this,new ArrayList<Customer_Add_Provider_model>());
+
+        // here show the text Customer Id
+
+        String text="Your Customer ID Is ";
+
+        String CustomerId=MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Customer_Id();
+
+        textCustomerId=findViewById(R.id.textCustomerId);
+
+        textCustomerId.setText(text+CustomerId);
+        
 
         // here handle the search
 
@@ -225,8 +241,9 @@ public class home_customer extends AppCompatActivity {
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<String, String>();
 
+
                     params.put("provider_phone_number","9924343883");
-                    params.put("customer_id","3");
+                    params.put("customer_id",MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Customer_Id());
                     return params;
                 }
 

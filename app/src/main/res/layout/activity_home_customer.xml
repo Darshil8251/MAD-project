@@ -35,12 +35,13 @@
         android:orientation="vertical">
         <!-- it will be change when use api -->
         <TextView
+            android:id="@+id/textCustomerId"
             android:layout_width="329dp"
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:layout_marginTop="30dp"
             android:gravity="center"
-            android:text="Your Customer Number Is 45"
+            android:text="Your Customer Number Is "
             android:textColor="@color/black"
             android:textSize="23dp" />
 

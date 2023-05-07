@@ -103,7 +103,18 @@ public class Provider_Customer_Adapter extends   RecyclerView.Adapter<Provider_C
         viewHolder.btnCustomerAccept.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                ProviderAcceptOrder(Customer_Detail);
+                String Customer_ID  = viewHolder.textCustomerId.getText().toString();
+                String provider_ID  = MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Provider_Id().toString();
+                String Customer_Morning_Cow=viewHolder.edtCustomer_Morning_Cow.getText().toString();
+                String Customer_Morning_Buffelow=viewHolder.edtCustomer_Morning_Buffelow.getText().toString();
+                String Customer_Morning_Other=viewHolder.edtCustomer_Morning_Other.getText().toString();
+                String Customer_Evening_Cow=viewHolder.edtCustomer_Evening_Cow.getText().toString();
+                String Customer_Evening_Buffelow=viewHolder.edtCustomer_Evening_Buffelow.getText().toString();
+                String Customer_Evening_Other=viewHolder.edtCustomer_Evening_Other.getText().toString();
+
+
+
+                ProviderAcceptOrder(Customer_ID,provider_ID,Customer_Morning_Cow,Customer_Morning_Buffelow,Customer_Morning_Other,Customer_Evening_Cow,Customer_Evening_Buffelow,Customer_Evening_Other);
             }
         });
 
@@ -123,7 +134,7 @@ public class Provider_Customer_Adapter extends   RecyclerView.Adapter<Provider_C
 
     // it is called when provider click on accept
 
-    private void ProviderAcceptOrder(Custom_Provider_Home customer_detail) {
+    private void ProviderAcceptOrder(String Customer_Id,String Provider_Id,String Cow_Mornig,String Buffelow_Morning,String Other_Morning,String Cow_Evening,String Buffelow_Evening,String Other_Evening ) {
 
         cd = new ConnectionDetector(context);
         isInternetPresent = cd.isConnectingToInternet();
@@ -171,14 +182,14 @@ public class Provider_Customer_Adapter extends   RecyclerView.Adapter<Provider_C
                 protected Map<String, String> getParams() {
                     Map<String, String> params = new HashMap<String, String>();
 
-                    params.put("provider_id",customer_detail.getProviderId());
-                    params.put("customer_id",customer_detail.getCustomerId());
-                    params.put("transaction_customer_morning_cow_volume",customer_detail.getCustomerMorningCowVolume());
-                    params.put("transaction_morning_buffelo_volume",customer_detail.getCustomerMorningBuffelowVolume());
-                    params.put("transaction_morning_other_volume",customer_detail.getCustomerMorningOtherVolume());
-                    params.put("transaction_evening_cow_volume",customer_detail.getCustomerEveningCowVolume());
-                    params.put("transaction_evening_buffelo_volume",customer_detail.getCustomerEveningBuffelowVolume());
-                    params.put("transaction_evening_other_volume",customer_detail.getCustomerEveningOtherVolume());
+                    params.put("provider_id",Provider_Id);
+                    params.put("customer_id",Customer_Id);
+                    params.put("transaction_customer_morning_cow_volume",Cow_Mornig);
+                    params.put("transaction_morning_buffelo_volume",Buffelow_Morning);
+                    params.put("transaction_morning_other_volume",Other_Morning);
+                    params.put("transaction_evening_cow_volume",Cow_Evening);
+                    params.put("transaction_evening_buffelo_volume",Buffelow_Evening);
+                    params.put("transaction_evening_other_volume",Other_Evening);
                     params.put("transaction_month", "0");
                     params.put("transaction_year", "0");
                     params.put("transaction_day", "0");
@@ -187,7 +198,6 @@ public class Provider_Customer_Adapter extends   RecyclerView.Adapter<Provider_C
                     return params;
                 }
 
-                ;
             };
             // disabling retry policy so that it won't make
             // multiple http calls
@@ -221,17 +231,19 @@ public class Provider_Customer_Adapter extends   RecyclerView.Adapter<Provider_C
         Switch Customer_Vacation_Mode;
           public ViewHolder(@NonNull View itemView) {
             super(itemView);
-           textCustomerName=itemView.findViewById(R.id.CustomerName);
-              textCustomerId=itemView.findViewById(R.id.CustomerId);
-              edtCustomer_Morning_Cow=itemView.findViewById(R.id.Customer_Morning_Cow);
-              edtCustomer_Morning_Buffelow=itemView.findViewById(R.id.Customer_Morning_Buffelow);
-              edtCustomer_Morning_Other=itemView.findViewById(R.id.Customer_Morning_Other);
-              edtCustomer_Evening_Cow=itemView.findViewById(R.id.Customer_Evening_Cow);
-              edtCustomer_Evening_Buffelow=itemView.findViewById(R.id.Customer_Evening_Buffelow);
-              edtCustomer_Evening_Other=itemView.findViewById(R.id.Customer_Evening_Other);
-              btnCustomerAccept=itemView.findViewById(R.id.CustomerAccept);
-              btnCustomerDenied=itemView.findViewById(R.id.CustomerDenied);
-              Customer_Vacation_Mode=itemView.findViewById(R.id.Customer_Vacation_Mode);
+              this.textCustomerName=itemView.findViewById(R.id.CustomerName);
+             this.textCustomerId=itemView.findViewById(R.id.CustomerId);
+             this.edtCustomer_Morning_Cow=itemView.findViewById(R.id.Customer_Morning_Cow);
+              this.edtCustomer_Morning_Buffelow=itemView.findViewById(R.id.Customer_Morning_Buffelow);
+              this.edtCustomer_Morning_Other=itemView.findViewById(R.id.Customer_Morning_Other);
+
+              this.edtCustomer_Evening_Cow=itemView.findViewById(R.id.Customer_Evening_Cow);
+              this.edtCustomer_Evening_Buffelow=itemView.findViewById(R.id.Customer_Evening_Buffelow);
+              this.edtCustomer_Evening_Other=itemView.findViewById(R.id.Customer_Evening_Other);
+
+              this.btnCustomerAccept=itemView.findViewById(R.id.CustomerAccept);
+              this.btnCustomerDenied=itemView.findViewById(R.id.CustomerDenied);
+              this.Customer_Vacation_Mode=itemView.findViewById(R.id.Customer_Vacation_Mode);
 
         }
 

@@ -224,7 +224,7 @@ public class provider_home extends AppCompatActivity {
 
 
                     // here we have take provider_id from sharepreference
-                    params.put("provider_id","1");
+                    params.put("provider_id",MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Provider_Id().toString());
                     return params;
                 }
 

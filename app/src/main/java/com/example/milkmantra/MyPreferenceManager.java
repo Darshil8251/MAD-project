@@ -21,7 +21,7 @@ public class MyPreferenceManager {
 
     // Sharedpref file name
     //id, name, email, dob,home_Address, phone_number, Current_place, Transplace1, Transplace2, Transplace3, Transplace4, Transplace5, sex, marrital_status
-    private static final String PREF_NAME = "Transfer_Teacher";
+    private static final String PREF_NAME = "MilkMantra";
 
 
 
@@ -29,10 +29,25 @@ public class MyPreferenceManager {
     private  static  final  String KEY_PHONE_NUMBER_SAVED="Phone_Number";
     private  static  final  String KEY_FLAG_SAVED="Flag";
 
+
+
+    private  static  final  String KEY_CUSTOMER_ID_SAVED="Customer_Id";
+
     private  static  final  String KEY_CUSTOMER_NAME_SAVED="Customer_Name";
-    private  static  final  String KEY_CUSTOMER_PINCODE_SAVED="Customer_Pincode";
+    private  static  final  String KEY_CUSTOMER_PHONE_NUMBER_SAVED="Customer_Phone_Number";
+
     private  static  final  String KEY_CUSTOMER_ADDRESS_SAVED="Customer_Address";
-    private  static  final  String KEY_CUSTOMER_MOBILE_NUMBER_SAVED="Custo";
+
+    private  static  final  String KEY_CUSTOMER_PINCODE_SAVED="Customer_Pincode";
+
+
+    private  static  final  String KEY_CUSTOMER_IS_ACTIVE_SAVED="Customer_Is_Active";
+
+    private  static  final  String KEY_CUSTOMER_UNIQUE_NO_SAVED="Customer_Unique_No";
+
+    private  static  final  String KEY_CUSTOMER_TIMESTAMP_SAVED="Customer_Timestamp";
+
+
 
     private  static  final  String KEY_PROVIDER_ID_SAVED="Provider_Id";
 
@@ -95,30 +110,92 @@ public class MyPreferenceManager {
     }
 
 
-    public  void storeCustomer(String Number,String Pincode,String Address,String Name) {
-        editor.putString(KEY_CUSTOMER_MOBILE_NUMBER_SAVED, Number);
-        editor.putString(KEY_CUSTOMER_NAME_SAVED, Name);
-        editor.putString(KEY_CUSTOMER_PINCODE_SAVED, Pincode);
-        editor.putString(KEY_CUSTOMER_ADDRESS_SAVED, Address);
+    public  void set_Customer_Id(String Customer_Id){
+        editor.putString(KEY_CUSTOMER_ID_SAVED,Customer_Id);
         editor.commit();
+    }
 
+    public  String get_Customer_Id(){
+        return  pref.getString(KEY_CUSTOMER_ID_SAVED,"");
     }
 
 
-    public String get_Customer_Phone_Number(){
-        return pref.getString(KEY_CUSTOMER_MOBILE_NUMBER_SAVED,"");
-    }
-    public String get_Customer_Name(){
-        return pref.getString(KEY_CUSTOMER_NAME_SAVED,"");
+    public  void set_Customer_Name(String Customer_Name){
+        editor.putString(KEY_CUSTOMER_NAME_SAVED,Customer_Name);
+        editor.commit();
     }
 
-    public String get_Customer_Pincode(){
-        return pref.getString(KEY_CUSTOMER_PINCODE_SAVED,"");
+    public  String get_Customer_Name(){
+        return  pref.getString(KEY_CUSTOMER_NAME_SAVED,"");
     }
 
-    public String get_Customer_Address(){
-        return pref.getString(KEY_CUSTOMER_ADDRESS_SAVED,"");
+
+    public  void set_Customer_Phone_Number(String Customer_Phone_Number){
+        editor.putString(KEY_CUSTOMER_PHONE_NUMBER_SAVED,Customer_Phone_Number);
+        editor.commit();
     }
+
+    public  String get_Customer_Phone_Number(){
+        return  pref.getString(KEY_CUSTOMER_PHONE_NUMBER_SAVED,"");
+    }
+
+    public  void set_Customer_Address(String Customer_Address){
+        editor.putString(KEY_CUSTOMER_ADDRESS_SAVED,Customer_Address);
+        editor.commit();
+    }
+
+    public  String get_Customer_Address(){
+        return  pref.getString(KEY_CUSTOMER_ADDRESS_SAVED,"");
+    }
+
+
+
+    public  void set_Customer_Pincode(String Customer_Pincode){
+        editor.putString(KEY_CUSTOMER_PINCODE_SAVED,Customer_Pincode);
+        editor.commit();
+    }
+
+
+    public  String get_Customer_Pincode(){
+        return  pref.getString(KEY_CUSTOMER_PINCODE_SAVED,"");
+    }
+
+    public  void set_Customer_Is_Active(String Customer_Is_Active){
+        editor.putString(KEY_CUSTOMER_IS_ACTIVE_SAVED,Customer_Is_Active);
+        editor.commit();
+    }
+
+
+    public  String get_Customer_Is_Active(){
+        return  pref.getString(KEY_CUSTOMER_IS_ACTIVE_SAVED,"");
+    }
+
+
+    public  void set_Customer_Unique_No(String Customer_Unique_No){
+        editor.putString(KEY_CUSTOMER_UNIQUE_NO_SAVED,Customer_Unique_No);
+        editor.commit();
+    }
+
+    public  String get_Customer_Unique_No(){
+        return  pref.getString(KEY_CUSTOMER_UNIQUE_NO_SAVED,"");
+    }
+
+    public  void set_Customer_Timestmap(String Customer_Timestamp){
+        editor.putString(KEY_CUSTOMER_TIMESTAMP_SAVED,Customer_Timestamp);
+        editor.commit();
+    }
+
+    public  String get_Customer_Timestamop(){
+        return  pref.getString(KEY_CUSTOMER_TIMESTAMP_SAVED,"");
+    }
+
+
+
+
+
+
+
+
 
 
     public void set_Provider_id(String provider_id){

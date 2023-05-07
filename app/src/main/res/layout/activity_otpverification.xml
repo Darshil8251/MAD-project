@@ -69,11 +69,12 @@
                android:layout_height="50dp"
                android:maxLength="6"
                android:background="@drawable/quantity"
-               android:digits="012345"
                android:gravity="center"
+               android:inputType="number"
                />
         </LinearLayout>
         <Button
+            android:id="@+id/ResendOTP"
             android:layout_width="99dp"
             android:layout_height="21dp"
             android:text="Resend OTP"

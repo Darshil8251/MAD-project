@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.example.milkmantra.customer.home_customer;
 import com.example.milkmantra.provider.provider_home;
+import com.example.milkmantra.provider.provider_verification_page;
 
 import java.util.Random;
 
@@ -37,30 +38,35 @@ public class MainActivity extends AppCompatActivity {
 
         String flag=MyApplication_OnlineTransfer.getInstance().getPrefManager().get_flage();
 
-        // if user is register
-        if(flag.equals("0")){
-            Intent intent=new Intent(this,asking_option.class);
-            startActivity(intent);
-            finish();
-        }
-
-        // if user is admin
-        else if(flag.equals("1")){
-            // here admin pannel display
-        }
-        // if user is customer
-        else if(flag.equals("2")){
-            Intent intent=new Intent(this, home_customer.class);
-            startActivity(intent);
-            finish();
-        }
-
         // if user is provider
-        else if(flag.equals("3")){
-            Intent intent=new Intent(this, provider_home.class);
+        if(flag.equals("1")){
+            Intent intent=new Intent(this,provider_home.class);
             startActivity(intent);
             finish();
         }
+
+
+        // if user is provider but not verifiy
+
+        if(flag.equals("2")){
+            Intent intent=new Intent(this, provider_verification_page.class);
+            startActivity(intent);
+            finish();
+        }
+
+        // if user is customer
+        if(flag.equals("3")){
+            Intent intent=new Intent(this,home_customer.class);
+            startActivity(intent);
+            finish();
+        }
+
+        // if user is Admin
+
+        if(flag.equals("4")){
+            // call admin pannel
+        }
+
 
 
         // it for otp verification

@@ -1,32 +1,53 @@
 package com.example.milkmantra.customer;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.milkmantra.ConnectionDetector;
+import com.example.milkmantra.MyApplication_OnlineTransfer;
 import com.example.milkmantra.R;
+import com.example.milkmantra.model.Custom_Provider_Home;
+import com.example.milkmantra.provider.EndPoints;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Parameter;
 import java.util.HashMap;
 import java.util.Map;
 
 public class create_account_customer extends AppCompatActivity {
-    private EditText edt_customer_name,edt_customer_phone,edt_customer_pincode,edt_customer_address;
+    private EditText edt_customer_name,edt_customer_pincode,edt_customer_address;
     private Button register;
+
+    private TextView text_CustomerNumber;
+
     Toolbar toolbar;
+
+    static ConnectionDetector cd;
+    static Boolean isInternetPresent = false;
+
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_account_customer);
@@ -43,26 +64,27 @@ public class create_account_customer extends AppCompatActivity {
 
 
         //take the value from edit text
-        edt_customer_name = findViewById(R.id.Name);
-        edt_customer_phone = findViewById(R.id.Phone_Number);
-        edt_customer_pincode = findViewById(R.id.Pincode);
-        edt_customer_address = findViewById(R.id.Address);
-        register = findViewById(R.id.register);
+        edt_customer_name = findViewById(R.id.CustomerName);
+        text_CustomerNumber= findViewById(R.id.CustomerNumber);
+        edt_customer_pincode = findViewById(R.id.CustomerPincode);
+        edt_customer_address = findViewById(R.id.CustomerAddress);
+        register = findViewById(R.id.CustomerRegister);
+
+        text_CustomerNumber.setText(MyApplication_OnlineTransfer.getInstance().getPrefManager().get_PhoneNumber());
+
 
         // adding on click listener to our button.
         register.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // validating if the text field is empty or not.
-                if (edt_customer_name.getText().toString().isEmpty() && edt_customer_address.getText().toString().isEmpty() && edt_customer_pincode.getText().toString().isEmpty() && edt_customer_phone.getText().toString().isEmpty()) {
+                if (edt_customer_name.getText().toString().isEmpty() && edt_customer_address.getText().toString().isEmpty() && edt_customer_pincode.getText().toString().isEmpty()) {
                     Toast.makeText(create_account_customer.this, "Please enter all the Detail Proper", Toast.LENGTH_SHORT).show();
-
                 }
 
                 // calling a method to post the data and passing our name and job.
                 else {
-
-                    postDataUsingVolley(edt_customer_name.getText().toString(), edt_customer_phone.getText().toString(), edt_customer_pincode.getText().toString(), edt_customer_address.getText().toString());
+                    createAccount(edt_customer_name.getText().toString(),edt_customer_pincode.getText().toString(), edt_customer_address.getText().toString());
                 }
             }
         });
@@ -70,117 +92,109 @@ public class create_account_customer extends AppCompatActivity {
 
     }
 
-    // Fetch the stored data in onResume() Because this is what will be called when the app opens again
-    @Override
-    protected void onResume() {
-        super.onResume();
-        // Fetching the stored data from the SharedPreference
-        SharedPreferences sh = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-        String cname = sh.getString("name", "");
-        int contact = sh.getInt("contact", 0000000000);
-        String caddress = sh.getString("Address", "");
-        int cpincode = sh.getInt("pincode", 000000);
+    private void createAccount(String Customer_Name, String Customer_Pincode, String Customer_Address) {
+
+            //CAll If Internet is available
+            cd = new ConnectionDetector(this);
+            isInternetPresent = cd.isConnectingToInternet();
+
+            // check for Internet status
+            if (isInternetPresent) {
+
+                // Toast.makeText(context, "Name " + name + "Email " + email + " phonenumber " + phonenumber + " maincity " + maincity, Toast.LENGTH_SHORT).show();
+                StringRequest strReq = new StringRequest(Request.Method.POST,
+                        EndPoints.CREATE_CUSTOMER_SAVE, new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //UPDATE PROPETIES
+
+                        try {
 
 
-//        // Setting the fetched data in the EditTexts
-        edt_customer_name.setText(cname);
-        edt_customer_phone.setText(String.valueOf(contact));
-        edt_customer_pincode.setText(String.valueOf(cpincode));
-        edt_customer_address.setText(caddress);
-
-    }
-
-    // Store the data in the SharedPreference in the onPause() method
-    // When the user closes the application onPause() will be called and data will be stored
-    @Override
-    protected void onPause() {
-        super.onPause();
-        // Creating a shared pref object with a file name "MySharedPref" in private mode
-        SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-        SharedPreferences.Editor myEdit = sharedPreferences.edit();
-//
-//        // write all the data entered by the user in SharedPreference and apply
-        myEdit.putString("name", edt_customer_name.getText().toString());
-        myEdit.putInt("contact", Integer.parseInt(edt_customer_phone.getText().toString()));
-        myEdit.putString("address", edt_customer_address.getText().toString());
-        myEdit.putInt("pincode", Integer.parseInt(edt_customer_pincode.getText().toString()));
-        myEdit.putBoolean("flage",true);
-        myEdit.apply();
-
-    }
+                            JSONObject obj = new JSONObject(response);
 
 
-    private void postDataUsingVolley(String name, String contact,String pincode,String address) {
-        // url to post our data
-        String url = "http://meteorrider.socialstuf.com/milkmantra/v1/index_v2.php/create_customer";
+                            // check for error flag
+                            if (obj.getBoolean("error") == false){
 
-        RequestQueue queue = Volley.newRequestQueue(create_account_customer.this);
+                          JSONObject user=obj.getJSONObject("user");
+                         MyApplication_OnlineTransfer.getInstance().getPrefManager().set_Customer_Id(user.getString("customer_id"));
+                         MyApplication_OnlineTransfer.getInstance().getPrefManager().set_Customer_Name(user.getString("customer_name"));
+                         MyApplication_OnlineTransfer.getInstance().getPrefManager().set_Customer_Phone_Number(user.getString("customer_phone_number"));
+                         MyApplication_OnlineTransfer.getInstance().getPrefManager().set_Provider_id(user.getString("provider_id"));
+                         MyApplication_OnlineTransfer.getInstance().getPrefManager().set_Customer_Pincode(user.getString("customer_pincode"));
+                         MyApplication_OnlineTransfer.getInstance().getPrefManager().set_Customer_Is_Active(user.getString("customer_is_active"));
+                         MyApplication_OnlineTransfer.getInstance().getPrefManager().set_Customer_Unique_No(user.getString("customer_unique_no"));
+                         MyApplication_OnlineTransfer.getInstance().getPrefManager().set_Customer_Timestmap(user.getString("customer_timestamp"));
 
-
-        StringRequest request = new StringRequest(Request.Method.POST, url, new com.android.volley.Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-
-                edt_customer_name.setText("");
-                edt_customer_address.setText("");
-                edt_customer_pincode.setText("");
-                edt_customer_phone.setText("");
-
-
-                Toast.makeText(create_account_customer.this, "Data added to API", Toast.LENGTH_SHORT).show();
-
-                try {
+                         Toast.makeText(create_account_customer.this, "Your Account Created", Toast.LENGTH_SHORT).show();
+                         Intent intent=new Intent(create_account_customer.this,home_customer.class);
+                         startActivity(intent);
+                         finish();
 
 
 
-                    JSONObject respObj = new JSONObject(response);
-                    Intent intent=new Intent(getApplicationContext(),home_customer.class);
-                    startActivity(intent);
+
+                            } else {
+                                // error in fetching chat rooms
+                                Toast.makeText(create_account_customer.this, "Check Internet Connection.#1", Toast.LENGTH_SHORT).show();
+                            }
+
+                        } catch (JSONException e)
+                        {
+                            Toast.makeText(create_account_customer.this, "Check Internet Connection.#2" + e.toString(), Toast.LENGTH_SHORT).show();
+                        }
 
 
-                    SharedPreferences sharedPreferences = getSharedPreferences("MySharedPref", MODE_PRIVATE);
-                    SharedPreferences.Editor myEdit = sharedPreferences.edit();
-//
-//        // write all the data entered by the user in SharedPreference and apply
-                    myEdit.putString("name", edt_customer_name.getText().toString());
-                    myEdit.putInt("contact", Integer.parseInt(edt_customer_phone.getText().toString()));
-                    myEdit.putString("address", edt_customer_address.getText().toString());
-                    myEdit.putInt("pincode", Integer.parseInt(edt_customer_pincode.getText().toString()));
-                    myEdit.apply();
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        NetworkResponse networkResponse = error.networkResponse;
+                        Toast.makeText(create_account_customer.this, "Check Internet Connection.#3" + error.toString(), Toast.LENGTH_SHORT).show();
+                    }
+                }) {
+
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> params = new HashMap<String, String>();
 
 
+                        // here we have take provider_id from sharepreference
+                        params.put("customer_name",Customer_Name);
+                        params.put("customer_phone_number",MyApplication_OnlineTransfer.getInstance().getPrefManager().get_PhoneNumber());
+                        params.put("customer_address",Customer_Address);
+                        params.put("customer_pincode",Customer_Pincode);
 
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                }
+
+                        return params;
+                    }
+
+                    ;
+                };
+                // disabling retry policy so that it won't make
+                // multiple http calls
+                int socketTimeout = 0;
+                RetryPolicy policy = new DefaultRetryPolicy(socketTimeout,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+
+                strReq.setRetryPolicy(new DefaultRetryPolicy(0, -1, 0));
+                //Adding request to request queue
+                MyApplication_OnlineTransfer.getInstance().addToRequestQueue(strReq);
+
+            } else {
+                // txtsent_0_row.setText("Check Internet connection & Retry.");
+                //btnrequestsent_retry.setVisibility(View.VISIBLE);
+                Toast.makeText(this, "Check Internet connection & Retry.", Toast.LENGTH_SHORT).show();
             }
-        }, new com.android.volley.Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                // method to handle errors.
-                Toast.makeText(create_account_customer.this, "Fail to get response = " + error, Toast.LENGTH_SHORT).show();
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() {
-                // below line we are creating a map for
-                // storing our values in key and value pair.
-                Map<String, String> params = new HashMap<String, String>();
 
-                // on below line we are passing our key
-                // and value pair to our parameters.
-                params.put("customer_name", name);
-                params.put("customer_phone_number", contact);
-                params.put("customer_pincode", pincode);
-                params.put("customer_address", address);
-                // at last we are
-                // returning our params.
-                return params;
-            }
-        };
-        // below line is to make
-        // a json object request.
-        queue.add(request);
-    }
+        }
+
+
+
+
 
 }
