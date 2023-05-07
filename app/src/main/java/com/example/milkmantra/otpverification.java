@@ -178,7 +178,6 @@ public class otpverification extends AppCompatActivity {
                                     JSONObject provider=obj.getJSONObject("user");
 
 
-
                                     // if it is provider then set all the detail in myprefrence and call provider_home screen
                                     if(provider.getString("provider_is_active").equals("1")){
 
