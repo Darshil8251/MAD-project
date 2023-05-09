@@ -101,6 +101,12 @@ public class Provider_Selection_Adapter extends RecyclerView.Adapter<Provider_Se
 
 
 
+        if(provider_selections.get(i).getProvider_vacation_mode().equals("1")){
+            viewHolder.sw.setChecked(true);
+        }
+        else {
+            viewHolder.sw.setChecked(false);
+        }
 
     }
 

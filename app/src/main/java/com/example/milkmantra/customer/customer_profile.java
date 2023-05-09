@@ -43,7 +43,6 @@ public class customer_profile extends AppCompatActivity {
         // here handling all the field of customer
 
         CustomerName=findViewById(R.id.CustomerName);
-        CustomerArea=findViewById(R.id.CustomerArea);
         CustomerPincode=findViewById(R.id.CustomerPincode);
         CustomerAddress=findViewById(R.id.CustomerAddress);
         CustomerPhoneNumber=findViewById(R.id.CustomerPhoneNumber);

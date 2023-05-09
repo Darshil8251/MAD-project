@@ -169,6 +169,7 @@ public class provider_home extends AppCompatActivity {
                                 if (!randomuserObj.getString("customer_id").equals("0")) {
                                     ObjUsr.setCustomerId(randomuserObj.getString("customer_id"));
                                     ObjUsr.setProviderId(randomuserObj.getString("provider_id"));
+                                    ObjUsr.setCustomerName(randomuserObj.getString("customer_name"));
                                     ObjUsr.setCustomerVacationMode(randomuserObj.getString("customer_vacation_mode"));
 
                                     ObjUsr.setCustomerMorningCowVolume(randomuserObj.getString("customer_morning_cow_volume"));

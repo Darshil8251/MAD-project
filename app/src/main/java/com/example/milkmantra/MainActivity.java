@@ -76,8 +76,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 no = number.getText().toString();
-                    if(no.equals("")){
-                        Toast.makeText(MainActivity.this,"Given null number",Toast.LENGTH_LONG).show();
+                no=no.trim();
+                    if(no.equals("") || no.length()<10){
+                        Toast.makeText(MainActivity.this,"Please Enter Proper Number",Toast.LENGTH_LONG).show();
                     }
                     else{
                         SendSMS(no);
