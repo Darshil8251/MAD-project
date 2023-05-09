@@ -19,6 +19,12 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         tools:targetApi="31" >
+
+        <activity
+            android:name=".customer_card"
+            android:exported="false"
+            android:parentActivityName=".provider.provider_customer_report"
+            android:theme="@style/myTheme.Milkmantra"/>
         <activity
             android:name=".provider.provider_profile"
             android:exported="false"

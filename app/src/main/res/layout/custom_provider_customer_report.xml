@@ -8,7 +8,7 @@
     android:layout_marginTop="10dp"
     >
     <TextView
-        android:id="@+id/Number"
+        android:id="@+id/CustomerNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="1"
@@ -18,7 +18,7 @@
         android:layout_marginLeft="10dp"/>
 
     <TextView
-        android:id="@+id/Name"
+        android:id="@+id/CustomerName"
         android:layout_width="123dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
@@ -27,7 +27,7 @@
         android:textColor="@color/black"
         android:textSize="14dp" />
     <Button
-        android:id="@+id/View"
+        android:id="@+id/CustomerCard"
         android:layout_width="64dp"
         android:layout_height="27dp"
         android:background="@drawable/button"

@@ -73,25 +73,28 @@
                android:inputType="number"
                />
         </LinearLayout>
+
         <Button
             android:id="@+id/ResendOTP"
             android:layout_width="99dp"
             android:layout_height="21dp"
             android:text="Resend OTP"
-            android:textColor="@color/black"
-            android:layout_gravity="right"
+            android:textColor="@color/blue"
+            android:layout_gravity="center"
             android:layout_marginRight="10dp"
             android:layout_marginTop="10dp"
-            android:background="@color/white"/>
+            android:background="@color/white"
+            android:textAllCaps="false"/>
        <Button
            android:id="@+id/submit"
            android:layout_width="271dp"
-           android:layout_height="43dp"
-           android:text="SUBMIT"
+           android:layout_height="48dp"
+           android:text="Submit"
            android:textColor="@color/white"
            android:layout_gravity="center"
            android:background="@drawable/button"
-           android:layout_marginTop="50dp"/>
+           android:layout_marginTop="50dp"
+           android:textAllCaps="false"/>
 
     </LinearLayout>
 </LinearLayout>

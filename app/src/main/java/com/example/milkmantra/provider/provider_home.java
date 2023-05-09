@@ -41,16 +41,13 @@ public class provider_home extends AppCompatActivity {
     Toolbar toolbar;
     SearchView searchView;
     RecyclerView recyclerView;
-    ArrayList<Custom_Provider_Home> customer_list=new ArrayList<>();
+    ArrayList<Custom_Provider_Home> customer_list = new ArrayList<>();
     ImageView more;
 
     Provider_Customer_Adapter adapter_fb;
 
     ConnectionDetector cd;
-    Boolean isInternetPresent=false;
-
-
-
+    Boolean isInternetPresent = false;
 
 
     @Override
@@ -59,19 +56,18 @@ public class provider_home extends AppCompatActivity {
         setContentView(R.layout.activity_provider_home);
 
 
-
         // it is for toolbar
 
-        toolbar=findViewById(R.id.ProviderHomeToolbar);
+        toolbar = findViewById(R.id.ProviderHomeToolbar);
         setSupportActionBar(toolbar);
 
-        if(getSupportActionBar()!=null){
+        if (getSupportActionBar() != null) {
             getSupportActionBar().setTitle("Home");
         }
 
         // handle search
 
-        searchView=findViewById(R.id.search_view);
+        searchView = findViewById(R.id.search_view);
         searchView.clearFocus();
        /* searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -87,9 +83,9 @@ public class provider_home extends AppCompatActivity {
         });*/
 
         // it for customer
-        recyclerView=findViewById(R.id.ProviderCustoemrRecycleview);
+        recyclerView = findViewById(R.id.ProviderCustoemrRecycleview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter_fb=new Provider_Customer_Adapter(this,customer_list);
+        adapter_fb = new Provider_Customer_Adapter(this, customer_list);
         recyclerView.setAdapter(adapter_fb);
 
         findCustomer(provider_home.this);
@@ -97,11 +93,11 @@ public class provider_home extends AppCompatActivity {
 
         // it for more
 
-        more=findViewById(R.id.More);
+        more = findViewById(R.id.More);
         more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(getApplicationContext(),provider_more.class);
+                Intent intent = new Intent(getApplicationContext(), provider_more.class);
                 startActivity(intent);
             }
         });
@@ -149,20 +145,18 @@ public class provider_home extends AppCompatActivity {
                     try {
 
 
-
                         JSONObject obj = new JSONObject(response);
                         //txtmessage.setText(obj.getString("message"));
 
                         JSONArray random_usersarray = obj.getJSONArray("random_users");
                         // check for error flag
-                        if (random_usersarray.length()!=0) {
-
+                        if (random_usersarray.length() != 0) {
 
 
                             for (int i = 0; i < random_usersarray.length(); i++) {
                                 JSONObject randomuserObj = (JSONObject) random_usersarray.get(i);
 
-                                Log.v("Provider response",randomuserObj.toString());
+                                Log.v("Provider response", randomuserObj.toString());
                                 Custom_Provider_Home ObjUsr = new Custom_Provider_Home();
                                 //id, name, email, dob, home_Address, phone_number, current_place,
                                 // transplace1, transplace2, transplace3, transplace4, transplace5,
@@ -194,7 +188,7 @@ public class provider_home extends AppCompatActivity {
 
                                 }
 
-                                           }
+                            }
                             adapter_fb.notifyDataSetChanged();
 
                         } else {
@@ -202,8 +196,7 @@ public class provider_home extends AppCompatActivity {
                             Toast.makeText(context, "Check Internet Connection.#1", Toast.LENGTH_SHORT).show();
                         }
 
-                    } catch (JSONException e)
-                    {
+                    } catch (JSONException e) {
                         Toast.makeText(context, "Check Internet Connection.#2" + e.toString(), Toast.LENGTH_SHORT).show();
                     }
 
@@ -225,7 +218,7 @@ public class provider_home extends AppCompatActivity {
 
 
                     // here we have take provider_id from sharepreference
-                    params.put("provider_id",MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Provider_Id().toString());
+                    params.put("provider_id", MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Provider_Id().toString());
                     return params;
                 }
 

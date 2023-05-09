@@ -3,6 +3,12 @@ package com.example.milkmantra.model;
 public class Provider_Customer_Report {
     String no,name;
 
+
+
+    public  Provider_Customer_Report(){
+
+    }
+
     public Provider_Customer_Report(String no, String name) {
         this.no = no;
         this.name = name;
