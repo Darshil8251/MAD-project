@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".customer.create_account_customer"
+    android:background="@color/blue"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/CustomerRegistrationToolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/blue">
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="680dp"
+        android:background="#EDE9E9"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="332dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:orientation="vertical"
+            android:background="@drawable/editetext">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Name"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"/>
+
+            <EditText
+                android:id="@+id/CustomerName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="16dp"
+                android:backgroundTint="@android:color/transparent"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="332dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:background="@drawable/editetext">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Phone Number"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"/>
+
+            <TextView
+                android:id="@+id/CustomerNumber"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:layout_marginLeft="10dp"
+                android:textColor="@color/black"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="332dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            android:background="@drawable/editetext">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Pincode"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"/>
+
+            <EditText
+                android:id="@+id/CustomerPincode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:inputType="number"
+                android:textSize="16dp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="332dp"
+            android:layout_height="64dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical"
+            android:background="@drawable/editetext">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Address"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"/>
+            <EditText
+                android:id="@+id/CustomerAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@android:color/transparent"
+                android:layout_gravity="center"
+                android:textSize="16dp" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/CustomerRegister"
+            android:layout_width="308dp"
+            android:layout_height="55dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button"
+            android:gravity="center"
+            android:text="@string/Customer_Register"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:layout_marginTop="30dp"/>
+    </LinearLayout>
+
+
+
+
+
+</LinearLayout>
