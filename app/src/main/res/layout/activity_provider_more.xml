@@ -27,12 +27,11 @@
         android:layout_height="51dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/more_design"
-        android:layout_marginTop="20dp"
-        >
+        android:layout_marginTop="20dp">
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="35dp"
-            android:src="@drawable/profile"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_profile"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="30dp"/>
         <TextView
@@ -42,8 +41,7 @@
             android:textColor="@color/black"
             android:textSize="20dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="50dp"
-            />
+            android:layout_marginLeft="30dp" />
 
     </LinearLayout>
     <LinearLayout
@@ -55,8 +53,8 @@
         android:layout_marginTop="20dp"
         >
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="32dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/report"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="30dp"/>
@@ -67,7 +65,7 @@
             android:textColor="@color/black"
             android:textSize="20dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="30dp"
             />
 
     </LinearLayout>
@@ -77,12 +75,11 @@
         android:layout_height="51dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/more_design"
-        android:layout_marginTop="20dp"
-        >
+        android:layout_marginTop="20dp">
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="32dp"
-            android:src="@drawable/sales"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_payment"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="30dp"/>
         <TextView
@@ -92,7 +89,7 @@
             android:textColor="@color/black"
             android:textSize="20dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="30dp"
             />
 
     </LinearLayout>
@@ -106,11 +103,11 @@
         >
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="39dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="30dp"
-            android:src="@drawable/payment" />
+            android:src="@drawable/ic_sales" />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -118,7 +115,7 @@
             android:textColor="@color/black"
             android:textSize="20dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="30dp"
             />
 
     </LinearLayout>
@@ -131,8 +128,8 @@
         android:layout_marginTop="20dp"
         >
         <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:src="@drawable/language"
             android:layout_gravity="center_vertical"
             android:layout_marginLeft="30dp"/>
@@ -143,7 +140,7 @@
             android:textColor="@color/black"
             android:textSize="20dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="30dp"
             />
 
     </LinearLayout>
@@ -169,7 +166,7 @@
             android:textColor="@color/black"
             android:textSize="20dp"
             android:layout_gravity="center_vertical"
-            android:layout_marginLeft="50dp"
+            android:layout_marginLeft="30dp"
             />
 
     </LinearLayout>

@@ -58,7 +58,6 @@ public class home_customer extends AppCompatActivity {
         setContentView(R.layout.activity_home_customer);
 
 
-
         // it is for toolbar
         toolbar=findViewById(R.id.HomeToolbar);
         setSupportActionBar(toolbar);

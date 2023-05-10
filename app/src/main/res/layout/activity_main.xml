@@ -9,60 +9,62 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="327dp"
+        android:layout_height="wrap_content"
         android:background="@color/blue"
         android:gravity="center"
+        android:layout_weight="0.5"
         android:orientation="vertical">
 
         <ImageView
-            android:layout_width="275dp"
-            android:layout_height="205dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:src="@drawable/homeicon"
-            />
+            android:src="@drawable/homeicon" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:orientation="vertical">
-        
+        android:layout_height="wrap_content"
+        android:layout_weight="0.5"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingStart="55dp"
+        android:paddingEnd="55dp">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/login"
-            android:textSize="20dp"
-            android:textStyle="bold"
-            android:textColor="@color/black"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
-            />
+            android:fontFamily="@font/roboto"
+            android:text="@string/login"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-         <EditText
-             android:id="@+id/Number"
-             android:layout_width="287dp"
-             android:layout_height="56dp"
-             android:hint="@string/number"
-             android:background="@drawable/editetext"
-             android:layout_gravity="center"
-             android:gravity="center"
-             android:inputType="number"
-             android:layout_marginTop="12dp"
-             android:maxLength="10"
-             android:paddingRight="40dp"
-             />
+        <EditText
+            android:id="@+id/Number"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/editetext"
+            android:gravity="center"
+            android:hint="@string/number"
+            android:inputType="number" />
+
         <Button
             android:id="@+id/sendotp"
-            android:layout_width="271dp"
-            android:layout_height="48dp"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
             android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
             android:background="@drawable/button"
-            android:text="Send OTP"
+            android:text="SEND OTP"
             android:textColor="@color/white"
-            android:textSize="20dp"
-            android:layout_marginTop="60dp"
-            android:textAllCaps="false"/>
+            android:textSize="20dp" />
     </LinearLayout>
 
 </LinearLayout>

@@ -57,8 +57,6 @@ public class otpverification extends AppCompatActivity {
         setContentView(R.layout.activity_otpverification);
 
 
-
-
         txtotp=findViewById(R.id.OTP);
         toolbar=findViewById(R.id.OTToolbar);
         setSupportActionBar(toolbar);
@@ -84,30 +82,29 @@ public class otpverification extends AppCompatActivity {
 
 
 
-
         // it is call when click on resend otp
 
-        ResendOTP=findViewById(R.id.ResendOTP);
+//        ResendOTP = findViewById(R.id.ResendOTP);
 
-        ResendOTP.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                SmsManager smsManager = SmsManager.getDefault();
-                otp=generateAndSendOTP();
-                smsManager.sendTextMessage(IntentExtraphoneNumber, null, otp, null, null);
-
-            }
-
-
-            private String generateAndSendOTP() {
-                // Generate a random 6-digit OTP
-                Random random = new Random();
-                int otp = 100000 + random.nextInt(900000);
-                return String.valueOf(otp);
-
-            }
-        });
+//        ResendOTP.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                SmsManager smsManager = SmsManager.getDefault();
+//                otp=generateAndSendOTP();
+//                smsManager.sendTextMessage(IntentExtraphoneNumber, null, otp, null, null);
+//
+//            }
+//
+//
+//            private String generateAndSendOTP() {
+//                // Generate a random 6-digit OTP
+//                Random random = new Random();
+//                int otp = 100000 + random.nextInt(900000);
+//                return String.valueOf(otp);
+//
+//            }
+//        });
 
 
         // it call validation time
@@ -146,8 +143,6 @@ public class otpverification extends AppCompatActivity {
     }
 
     private void userIdentification() {
-
-
 
 
             //CAll If Internet is available

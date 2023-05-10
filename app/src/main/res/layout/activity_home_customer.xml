@@ -16,11 +16,12 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/blue">
+
             <ImageView
                 android:id="@+id/Profile"
-                android:layout_width="52dp"
-                android:layout_height="46dp"
-                android:src="@drawable/profile"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_profile"
                 android:layout_gravity="end"
                 android:layout_marginRight="20dp"/>
 
@@ -54,8 +55,6 @@
             android:gravity="center"
             android:orientation="horizontal">
 
-
-
                 <SearchView
                     android:id="@+id/search_view"
                     android:layout_width="243dp"
@@ -71,7 +70,7 @@
                <ImageView
                    android:layout_width="50dp"
                    android:layout_height="50dp"
-                   android:src="@drawable/contact"
+                   android:src="@drawable/ic_contact"
                    android:layout_marginLeft="10dp"
                    />
 
@@ -88,9 +87,6 @@
                 android:id="@+id/recyycleViewOfHome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
-
-
-
 
         </RelativeLayout>
 

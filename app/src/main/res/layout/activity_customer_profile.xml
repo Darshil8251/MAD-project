@@ -18,9 +18,9 @@
             android:background="@color/blue">
             <ImageView
                 android:id="@+id/EditeProfile"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/edit_profile"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_edit_profile"
                 android:layout_gravity="end"
                 android:layout_marginRight="20dp"/>
 
@@ -118,18 +118,16 @@
                 android:textSize="20dp" />
         </LinearLayout>
 
-
-
+        <Button
+            android:id="@+id/CustomerLogout"
+            android:layout_width="271dp"
+            android:layout_height="43dp"
+            android:layout_gravity="center"
+            android:background="@drawable/button"
+            android:text="@string/Logout"
+            android:textColor="@color/white"
+            android:layout_marginTop="150dp"/>
     </LinearLayout>
 
-    <Button
-        android:id="@+id/CustomerLogout"
-        android:layout_width="271dp"
-        android:layout_height="43dp"
-        android:layout_gravity="center"
-        android:background="@drawable/button"
-        android:text="@string/Logout"
-        android:textColor="@color/white"
-        android:layout_marginTop="150dp"/>
 
 </LinearLayout>
