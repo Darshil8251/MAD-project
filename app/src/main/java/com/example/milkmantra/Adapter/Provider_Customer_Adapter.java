@@ -144,9 +144,6 @@ public class Provider_Customer_Adapter extends RecyclerView.Adapter<Provider_Cus
 
 
               // it is called when click on accept button
-                showDialog(customer_list.get(i));
-
-
 
                 String Customer_ID = viewHolder.textCustomerId.getText().toString();
                 String provider_ID = MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Provider_Id().toString();
@@ -156,6 +153,8 @@ public class Provider_Customer_Adapter extends RecyclerView.Adapter<Provider_Cus
                 String Customer_Evening_Cow = viewHolder.btnCustomer_Evening_Cow.getText().toString();
                 String Customer_Evening_Buffelow = viewHolder.btnCustomer_Evening_Buffelow.getText().toString();
                 String Customer_Evening_Other = viewHolder.btnCustomer_Evening_Other.getText().toString();
+
+                showDialog_forAccept_milk_order(Customer_ID,provider_ID,Customer_Morning_Cow,Customer_Morning_Buffelow,Customer_Morning_Other,Customer_Evening_Cow,Customer_Evening_Buffelow,Customer_Evening_Other);
 
 
                // ProviderAcceptOrder(Customer_ID, provider_ID, Customer_Morning_Cow, Customer_Morning_Buffelow, Customer_Morning_Other, Customer_Evening_Cow, Customer_Evening_Buffelow, Customer_Evening_Other);
@@ -175,7 +174,7 @@ public class Provider_Customer_Adapter extends RecyclerView.Adapter<Provider_Cus
 
     }
 
-    private void showDialog(Custom_Provider_Home customer_list) {
+    private void showDialog_forAccept_milk_order(String customer_id, String provider_id, String customer_morning_cow, String customer_morning_buffelow, String customer_morning_other, String customer_evening_cow, String customer_evening_buffelow, String customer_evening_other) {
 
 
 
@@ -200,21 +199,51 @@ public class Provider_Customer_Adapter extends RecyclerView.Adapter<Provider_Cus
         btnBuffelowEvening=dialogView.findViewById(R.id.btnCustomer_Evening_Buffelow);
         btnOtherEvening=dialogView.findViewById(R.id.btnCustomer_Evening_Other);
 
-        btnCowMorning.setText(customer_list.getCustomerMorningCowVolume());
-        btnCowEvening.setText(customer_list.getCustomerEveningCowVolume());
+       /* btnCowMorning.setText(customer_morning_cow);
+        btnCowEvening.setText(customer_evening_cow);
 
 
-        btnBuffelowEvening.setText(customer_list.getCustomerEveningBuffelowVolume());
-        btnBuffelowMorning.setText(customer_list.getCustomerMorningBuffelowVolume());
+        btnBuffelowEvening.setText(customer_morning_buffelow);
+        btnBuffelowMorning.setText(customer_evening_buffelow);
 
 
-        btnOtherEvening.setText(customer_list.getCustomerEveningOtherVolume());
-        btnOtherMorning.setText(customer_list.getCustomerMorningOtherVolume());
+        btnOtherEvening.setText(customer_morning_other);
+        btnOtherMorning.setText(customer_evening_other);*/
+
+        btnCowMorning.setText(customer_morning_cow);
+        btnBuffelowMorning.setText(customer_morning_buffelow);
+        btnOtherMorning.setText(customer_morning_other);
+
+
+        btnCowEvening.setText(customer_evening_cow);
+        btnBuffelowEvening.setText(customer_evening_buffelow);
+        btnOtherEvening.setText(customer_evening_other);
 
 
 
         Accept=dialogView.findViewById(R.id.btnProviderAcceptOrder);
         Denied=dialogView.findViewById(R.id.btnProviderDeniedOrder);
+
+        Accept.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ProviderAcceptOrder(customer_id, provider_id,customer_morning_cow,customer_morning_buffelow,customer_morning_other,customer_evening_cow,customer_evening_buffelow,customer_evening_other);
+
+                dialog.dismiss();
+
+            }
+        });
+
+        Denied.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //ProviderAcceptOrder(customer_id, provider_id,customer_morning_cow,customer_morning_buffelow,customer_morning_other,customer_evening_cow,customer_evening_buffelow,customer_evening_other);
+
+                dialog.dismiss();
+
+            }
+        });
+
 
 
         dialog.show();
@@ -224,6 +253,7 @@ public class Provider_Customer_Adapter extends RecyclerView.Adapter<Provider_Cus
 
 
     }
+
 
     // it is called when click on accept button
     private void ShowDialog(final Button edt,int position) {
@@ -248,7 +278,7 @@ public class Provider_Customer_Adapter extends RecyclerView.Adapter<Provider_Cus
             @Override
             public void onClick(DialogInterface dialog, int i) {
                 // Handle OK button click here
-                //dialog.dismiss();
+                dialog.dismiss();
             }
         });
 

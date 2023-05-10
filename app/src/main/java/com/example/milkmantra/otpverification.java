@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.DefaultRetryPolicy;
@@ -38,7 +39,7 @@ public class otpverification extends AppCompatActivity {
 
     Toolbar toolbar;
 
-    Button submit,ResendOTP;
+    Button submit;
 
     EditText txtotp;
 
@@ -50,6 +51,8 @@ public class otpverification extends AppCompatActivity {
     static ConnectionDetector cd;
     static Boolean isInternetPresent = false;
     String otp;
+
+    TextView ResendOtp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,30 +84,27 @@ public class otpverification extends AppCompatActivity {
         otp=IntentExtraOTP;
 
 
+        // it is for ResendOTP
+        ResendOtp=findViewById(R.id.ResendOTP);
 
-        // it is call when click on resend otp
+        ResendOtp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SmsManager smsManager = SmsManager.getDefault();
+                otp=generateAndSendOTP();
+                smsManager.sendTextMessage(IntentExtraphoneNumber, null, otp, null, null);
+            }
+            private String generateAndSendOTP() {
+                // Generate a random 6-digit OTP
+                Random random = new Random();
+                int otp = 100000 + random.nextInt(900000);
+                return String.valueOf(otp);
 
-//        ResendOTP = findViewById(R.id.ResendOTP);
+            }
+        });
 
-//        ResendOTP.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//                SmsManager smsManager = SmsManager.getDefault();
-//                otp=generateAndSendOTP();
-//                smsManager.sendTextMessage(IntentExtraphoneNumber, null, otp, null, null);
-//
-//            }
-//
-//
-//            private String generateAndSendOTP() {
-//                // Generate a random 6-digit OTP
-//                Random random = new Random();
-//                int otp = 100000 + random.nextInt(900000);
-//                return String.valueOf(otp);
-//
-//            }
-//        });
+
+
 
 
         // it call validation time
@@ -229,7 +229,6 @@ public class otpverification extends AppCompatActivity {
                                     MyApplication_OnlineTransfer.getInstance().getPrefManager().set_Customer_Timestmap(customer.getString("customer_timestamp"));
                                     MyApplication_OnlineTransfer.getInstance().getPrefManager().storeFlage("3");
 
-
                                     Intent intent=new Intent(otpverification.this, home_customer.class);
                                     startActivity(intent);
                                     finish();
@@ -276,8 +275,6 @@ public class otpverification extends AppCompatActivity {
                 MyApplication_OnlineTransfer.getInstance().addToRequestQueue(strReq);
 
             } else {
-                // txtsent_0_row.setText("Check Internet connection & Retry.");
-                //btnrequestsent_retry.setVisibility(View.VISIBLE);
                 Toast.makeText(otpverification.this, "Check Internet connection & Retry.", Toast.LENGTH_SHORT).show();
             }
 

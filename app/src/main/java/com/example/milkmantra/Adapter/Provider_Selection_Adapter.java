@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -90,23 +91,36 @@ public class Provider_Selection_Adapter extends RecyclerView.Adapter<Provider_Se
 
 
         // viewHolder.name.setText(provider_selections.get(i).getProvider_name());
-        viewHolder.ed1.setText(provider_selections.get(i).getCustomer_morning_cow_volume());
-        viewHolder.ed2.setText(provider_selections.get(i).getCustomer_morning_buffelo_volume());
-        viewHolder.ed3.setText(provider_selections.get(i).getCustomer_morning_other_volume());
-        viewHolder.ed4.setText(provider_selections.get(i).getCustomer_evening_cow_volume());
-        viewHolder.ed5.setText(provider_selections.get(i).getCustomer_evening_buffelo_volume());
-        viewHolder.ed6.setText(provider_selections.get(i).getCustomer_evening_other_volume());
+
+        // it for morning
+        viewHolder.CowMorning.setText(provider_selections.get(i).getCustomer_morning_cow_volume());
+        viewHolder.BuffelowMorning.setText(provider_selections.get(i).getCustomer_morning_buffelo_volume());
+        viewHolder.OtherMorning.setText(provider_selections.get(i).getCustomer_morning_other_volume());
+
+        // it for evening
+        viewHolder.CowEvening.setText(provider_selections.get(i).getCustomer_evening_cow_volume());
+        viewHolder.BuffelowEvening.setText(provider_selections.get(i).getCustomer_evening_buffelo_volume());
+        viewHolder.OtherEvening.setText(provider_selections.get(i).getCustomer_evening_other_volume());
+
+
         viewHolder.lblName.setText(provider_selections.get(i).getProvider_name());
         viewHolder.lblProvider_id.setText(provider_selections.get(i).getProvider_id());
 
 
 
-        if(provider_selections.get(i).getProvider_vacation_mode().equals("1")){
-            viewHolder.sw.setChecked(true);
-        }
-        else {
-            viewHolder.sw.setChecked(false);
-        }
+
+        /*if(provider_selections.get(i)!=null){
+
+            if(provider_selections.get(i).getProvider_vacation_mode().equals("1")){
+                viewHolder.sw.setChecked(true);
+            }
+            else {
+                viewHolder.sw.setChecked(false);
+            }
+
+        }*/
+
+
 
     }
 
@@ -118,7 +132,7 @@ public class Provider_Selection_Adapter extends RecyclerView.Adapter<Provider_Se
 
     // all the operation perform here
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        EditText ed1, ed2, ed3, ed4, ed5, ed6;
+        EditText CowMorning, BuffelowMorning, OtherMorning, CowEvening, BuffelowEvening, OtherEvening;
         TextView lblName, lblProvider_id;
         Button btnSaveCustomerMilkDetail;
         int m, e;
@@ -126,21 +140,39 @@ public class Provider_Selection_Adapter extends RecyclerView.Adapter<Provider_Se
         Switch sw;
         RadioButton rb1, rb2;
 
+        ImageView ProviderCall,ProviderRemove;
+
         // here we have find id and after the set data into onBindingViewHolder
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             // name=itemView.findViewById(R.id.Name);
 
-            ed1 = itemView.findViewById(R.id.moring_cow);
-            ed2 = itemView.findViewById(R.id.mornig_buffelow);
-            ed3 = itemView.findViewById(R.id.mornig_other);
-            ed4 = itemView.findViewById(R.id.evening_cow);
-            ed5 = itemView.findViewById(R.id.evenig_buffelow);
-            ed6 = itemView.findViewById(R.id.eveninig_other);
-            lblName = itemView.findViewById(R.id.lblName);
-            lblProvider_id = itemView.findViewById(R.id.lblProvider_id);
-            btnSaveCustomerMilkDetail = itemView.findViewById(R.id.btnSaveCustomerMilkDetail);
+            this.CowMorning = itemView.findViewById(R.id.moring_cow);
+            this.BuffelowMorning = itemView.findViewById(R.id.mornig_buffelow);
+            this.OtherMorning = itemView.findViewById(R.id.mornig_other);
+
+
+            this.CowEvening = itemView.findViewById(R.id.evening_cow);
+            this.BuffelowEvening = itemView.findViewById(R.id.evenig_buffelow);
+            this.OtherEvening = itemView.findViewById(R.id.eveninig_other);
+
+
+            this.lblName = itemView.findViewById(R.id.lblName);
+            this.lblProvider_id = itemView.findViewById(R.id.lblProvider_id);
+            this.btnSaveCustomerMilkDetail = itemView.findViewById(R.id.btnSaveCustomerMilkDetail);
+            this.ProviderCall=itemView.findViewById(R.id.ProviderCall);
+            this.ProviderRemove=itemView.findViewById(R.id.ProviderRemove);
+
+
+
+
+
+
+
             btnSaveCustomerMilkDetail.setOnClickListener(this);
+
+
+
 
         }
 
@@ -161,6 +193,8 @@ public class Provider_Selection_Adapter extends RecyclerView.Adapter<Provider_Se
                             @Override
                             public void onResponse(String response) {
                                 //UPDATE PROPETIES
+
+                                Log.v("error","#######"+response);
 
                                 try {
 

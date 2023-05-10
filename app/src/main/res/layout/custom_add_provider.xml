@@ -37,6 +37,7 @@
             android:textSize="18dp" />
 
         <ImageView
+            android:id="@+id/ProviderCall"
             android:layout_width="42dp"
             android:layout_height="30dp"
             android:layout_marginLeft="100dp"
@@ -44,6 +45,7 @@
             android:src="@drawable/call" />
 
         <ImageView
+            android:id="@+id/ProviderRemove"
             android:layout_width="63dp"
             android:layout_height="52dp"
             android:layout_marginLeft="10dp"

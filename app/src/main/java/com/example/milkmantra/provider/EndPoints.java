@@ -27,4 +27,7 @@ public class EndPoints {
     // it is for User identification
     public static  final String USER_IDENTIFICATION="http://meteorrider.socialstuf.com/milkmantra/v1/index_v2.php/IsUserExsists";
 
+
+    public  static  final  String CARD_DATA="http://meteorrider.socialstuf.com/milkmantra/v1/index_v2.php/get_customer_report_Card";
+
 }

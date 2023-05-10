@@ -16,7 +16,7 @@ public class provider_profile extends AppCompatActivity {
 
     Toolbar toolbar;
     ImageView home;
-    TextView ProviderName,ProviderAddress,ProviderPhoneNumber,ProviderArea,ProviderPincode;
+    TextView ProviderName,ProviderAddress,ProviderPhoneNumber,ProviderPincode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,7 +35,6 @@ public class provider_profile extends AppCompatActivity {
             // it is for profile field
             ProviderName=findViewById(R.id.ProviderName);
             ProviderAddress=findViewById(R.id.ProviderAddress);
-            ProviderArea=findViewById(R.id.ProviderArea);
             ProviderPhoneNumber=findViewById(R.id.ProviderPhoneNumber);
             ProviderPincode=findViewById(R.id.ProviderPincode);
 
@@ -43,7 +42,6 @@ public class provider_profile extends AppCompatActivity {
             Toast.makeText(this, MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Provider_Pincode(), Toast.LENGTH_SHORT).show();
             ProviderName.setText(MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Provider_Name());
             ProviderPincode.setText(MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Provider_Pincode());
-            ProviderArea.setText(MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Provider_Area());
             ProviderPhoneNumber.setText(MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Provider_Phone_Number());
             ProviderAddress.setText(MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Provider_Address());
 

@@ -117,25 +117,7 @@
                 android:textSize="20dp" />
         </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:orientation="vertical">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Area"
-                android:textSize="12dp" />
-
-            <TextView
-                android:id="@+id/ProviderArea"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
-        </LinearLayout>
 
     </LinearLayout>
 

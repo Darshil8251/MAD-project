@@ -44,7 +44,7 @@
                 android:text="Name" />
 
             <EditText
-                android:id="@+id/Name"
+                android:id="@+id/EditName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="16dp"
@@ -70,7 +70,7 @@
                 android:text="Pincode" />
 
             <EditText
-                android:id="@+id/Pincode"
+                android:id="@+id/EditPincode"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -98,7 +98,7 @@
                 android:text="Address" />
 
             <EditText
-                android:id="@+id/Address"
+                android:id="@+id/EditAddress"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
