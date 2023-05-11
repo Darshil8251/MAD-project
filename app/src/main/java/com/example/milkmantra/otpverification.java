@@ -197,7 +197,6 @@ public class otpverification extends AppCompatActivity {
                                     else if(provider.getString("provider_is_active").equals("0")){
 
 
-
                                         MyApplication_OnlineTransfer.getInstance().getPrefManager().set_Provider_id(provider.getString("provider_id"));
                                         MyApplication_OnlineTransfer.getInstance().getPrefManager().set_Provider_Name(provider.getString("provider_name"));
                                         MyApplication_OnlineTransfer.getInstance().getPrefManager().set_Provider_Phone(provider.getString("provider_phone_number"));
@@ -208,8 +207,6 @@ public class otpverification extends AppCompatActivity {
                                         MyApplication_OnlineTransfer.getInstance().getPrefManager().set_Provider_Is_Active(provider.getString("provider_is_active"));
                                         MyApplication_OnlineTransfer.getInstance().getPrefManager().set_Provider_Time_Stamp(provider.getString("provider_time_stamp"));
                                         MyApplication_OnlineTransfer.getInstance().getPrefManager().storeFlage("2");
-
-
                                         Intent intent=new Intent(otpverification.this, provider_verification_page.class);
                                         startActivity(intent);
                                         finish();

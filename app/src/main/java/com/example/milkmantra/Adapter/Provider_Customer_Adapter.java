@@ -199,17 +199,6 @@ public class Provider_Customer_Adapter extends RecyclerView.Adapter<Provider_Cus
         btnBuffelowEvening=dialogView.findViewById(R.id.btnCustomer_Evening_Buffelow);
         btnOtherEvening=dialogView.findViewById(R.id.btnCustomer_Evening_Other);
 
-       /* btnCowMorning.setText(customer_morning_cow);
-        btnCowEvening.setText(customer_evening_cow);
-
-
-        btnBuffelowEvening.setText(customer_morning_buffelow);
-        btnBuffelowMorning.setText(customer_evening_buffelow);
-
-
-        btnOtherEvening.setText(customer_morning_other);
-        btnOtherMorning.setText(customer_evening_other);*/
-
         btnCowMorning.setText(customer_morning_cow);
         btnBuffelowMorning.setText(customer_morning_buffelow);
         btnOtherMorning.setText(customer_morning_other);

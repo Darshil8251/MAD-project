@@ -428,7 +428,7 @@ public class home_customer extends AppCompatActivity {
                     Map<String, String> params = new HashMap<String, String>();
 
 
-                    params.put("provider_phone_number","9924343883");
+                    params.put("provider_phone_number","0");
                     params.put("customer_id",MyApplication_OnlineTransfer.getInstance().getPrefManager().get_Customer_Id());
                     return params;
                 }

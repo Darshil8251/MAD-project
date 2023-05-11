@@ -125,8 +125,8 @@ public class provider_verification_page extends AppCompatActivity {
                         protected Map<String, String> getParams() {
                             Map<String, String> params = new HashMap<String, String>();
 
-                            params.put("provider_name","Anil Kumar");
-                            params.put("provider_phone_number","85679696112");
+                            params.put("provider_name","no name");
+                            params.put("provider_phone_number",MyApplication_OnlineTransfer.getInstance().getPrefManager().get_PhoneNumber().toString());
                             params.put("provider_pincode","364710");
                             params.put("provider_address","America");
                             params.put("provider_vacation_mode","0");
